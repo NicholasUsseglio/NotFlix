@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="it" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: head('Accesso negato')">
+  <link rel="stylesheet" href="../static/css/styles.css"/>
+</head>
+<body>
+<header th:replace="fragments :: header('')"></header>
+<main class="main">
+  <div class="card">
+    <h2>Accesso negato</h2>
+    <p class="muted">Non hai i permessi per visualizzare questa pagina.</p>
+    <a class="btn" href="/">Torna alla Home</a>
+  </div>
+</main>
+<footer th:replace="fragments :: footer"></footer>
+</body>
+</html>

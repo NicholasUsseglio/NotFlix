@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="it" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Errore</title>
+</head>
+<body style="font-family:Arial,Helvetica,sans-serif;color:#222;padding:36px;">
+  <h1>Errore <span th:text="${status} ?: '500'">500</span></h1>
+  <p th:if="${error}" th:text="${error}">Si è verificato un errore.</p>
+  <p th:if="${message}" th:text="${message}"></p>
+  <p>Path: <span th:text="${path}">/</span></p>
+  <p><a th:href="@{/}">Torna alla Home</a></p>
+  <!-- Debug: mostra l'eccezione se presente nel modello -->
+  <pre th:if="${trace}" th:text="${trace}" style="white-space:pre-wrap;background:#f8f8f8;padding:12px;border-radius:6px;overflow:auto;max-height:400px;color:#111;"></pre>
+</body>
+</html>
+
+
+<!-- <!DOCTYPE html>
+<html lang="it" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments :: head('Errore')}"></head>
+<body>
+<header th:replace="~{fragments :: header('')}"></header>
+<main class="main">
+  <div class="card">
+    <h2>Errore</h2>
+    <p class="muted">Si è verificato un errore.</p>
+    <p th:if="${error}" th:text="${error}">Messaggio di errore</p>
+    <a class="btn" href="/">Torna alla Home</a>
+  </div>
+</main>
+<footer th:replace="~{fragments :: footer}"></footer>
+</body>
+</html> -->

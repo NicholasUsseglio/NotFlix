@@ -1,0 +1,78 @@
+<!DOCTYPE html> <html lang="it" 
+    xmlns:th="http://www.thymeleaf.org" 
+    xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:insert="fragmentRegisti :: head('Elenco Registi')"> 
+    <link rel="stylesheet" th:href="@{/css/registi.css}" href="../static/css/registi.css" /> 
+</head>
+<body>
+    <header th:replace="fragments :: header('registi')">
+        <div class="topbar">
+            <div class="topbar-inner">
+                <div class="logo">
+            <a href="/" style="display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--white);font-weight:600;">
+                <img src="/springVideo/src/main/resources/static/img/logo.png" alt="logo">
+                <span>Spring Video</span>
+            </a>
+        </div>
+
+        <nav style="display:flex;gap:8px;flex-wrap:wrap;">
+            <a class="nav-pill" href="/">Home</a>
+            <a class="nav-pill" href="/film">Film</a>
+            <a class="nav-pill" href="/serietv">Serie TV</a>
+            <a class="nav-pill" href="/podcast">Podcast</a>
+        </nav>
+
+        <div class="user-area" style="color:var(--white);font-size:0.9rem;display:flex;flex-direction:column;line-height:1.3;min-width:max-content;">
+            <span sec:authorize="isAnonymous()">
+                <a href="/auth/login" style="color:var(--white);text-decoration:none;font-weight:600;">Accedi</a>
+                <span style="color:var(--muted);font-size:0.8rem;display:block;">
+                    <a href="/auth/register" style="color:var(--muted);text-decoration:none;">Registrati</a>
+                </span>
+            </span>
+
+            <span sec:authorize="isAuthenticated()">
+                <span style="color:var(--muted);font-size:0.8rem;">
+                    Ciao,
+                    <span th:text="${#authentication.name} ?: 'visitatore'">visitatore</span>
+                </span>
+                <form th:action="@{/logout}" method="post">
+                    <button type="submit" class="nav-pill" style="margin-top:6px;padding:4px 10px;font-size:0.8rem;line-height:1;">
+                        Esci
+                    </button>
+                </form>
+            </span>
+        </div>
+
+    </div>
+</div>
+</header> <div class="page-content"> 
+<!-- Barra di ricerca -->
+<form id="searchBar" th:action="@{/registi}" method="get" class="search-filter-bar">
+    <input type="text" name="titolo" placeholder="Cerca regista...">
+    <button type="submit" class="btn">🔍</button>
+</form>
+
+<!-- Titolo sezione -->
+<h2 class="section-title">Elenco Registi</h2>
+
+<!-- Lista registi -->
+<div id="listaRegisti" class="registi-list">
+
+    <!-- Card singolo regista -->
+    <div class="film-card" th:each="regista : ${registiList}" th:data-nome="${regista.nome} + ' ' + ${regista.cognome}">
+        <div class="regista-card-header">REGISTA</div>
+        <div class="regista-card-body">
+            <div class="poster-placeholder">Immagine</div>
+            <p class="regista-name" th:text="${regista.nome} + ' ' + ${regista.cognome}">Nome Cognome Regista</p>
+            <p class="regista-info" th:text="${regista.nazionalita}">Nazionalità</p>
+            <a th:href="@{/registi/{id}(id=${regista.id})}" class="nav-pill regista-detail-link">Vedi Dettagli</a>
+        </div>
+    </div>
+
+    <!-- Messaggio se lista vuota -->
+    <div th:if="${registiList.isEmpty()}" style="grid-column: 1 / -1; text-align: center; padding: 30px;">
+        <p th:text="#{registi.empty.message}">Nessun regista trovato con i criteri specificati.</p>
+    </div>
+</div>
+
+</div> <footer th:replace="fragments :: footer"> <div class="footer"> © Spring Video – Tutti i diritti riservati <br> Facebook · Instagram · YouTube </div> </footer> <script src="/springVideo/src/main/resources/static/js/registi.js" defer></script> </body> </html>

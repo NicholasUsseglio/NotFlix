@@ -1,0 +1,216 @@
+.user-area-main {
+    display: flex;
+    gap: 20px;
+    max-width: 1100px;
+    margin: 40px auto;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Sidebar */
+.sidebar {
+    flex: 0 0 220px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background: rgba(0, 0, 0, 0.35);
+    padding: 20px;
+    border-radius: 12px;
+    color: #fff;
+}
+
+.sidebar button,
+.sidebar a {
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.sidebar a:hover,
+.sidebar button:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Profilo */
+.profilo-section,
+.preferiti-section,
+.towatch-section {
+    flex: 1;
+    display: none;
+    flex-direction: column;
+    gap: 16px;
+    background: rgba(0, 0, 0, 0.35);
+    padding: 30px;
+    border-radius: 12px;
+    color: #fff;
+}
+
+/* Box generali */
+.info-box,
+.preferito-box,
+.towatch-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 12px 20px;
+    border-radius: 12px;
+}
+
+.info-box label {
+    width: 150px;
+    font-weight: 600;
+    color: #fff;
+}
+
+.info-box input {
+    flex: 1;
+    display: none;
+    padding: 10px;
+    border-radius: 8px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+}
+
+.btn-edit {
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.btn-salva,
+.btn-annulla {
+    flex: 1;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btn-salva {
+    background: linear-gradient(90deg, #5B00FF, #FF00A8);
+    color: #fff;
+    transition: background 0.3s ease, color 0.3s ease, border 0.3s ease;
+}
+
+.btn-annulla {
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+    transition: background 0.3s ease, color 0.3s ease, border 0.3s ease;
+}
+
+.btn-salva:hover,
+.btn-annulla:hover {
+    border: 1px solid #FF00A8;
+}
+
+/* Liste */
+.preferiti-lista,
+.towatch-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.titolo {
+    color: #fff;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.titolo:hover {
+    text-decoration: underline;
+}
+
+/* Sezione Recensioni */
+.recensioni-section {
+    flex: 1;
+    display: none;
+    flex-direction: column;
+    gap: 16px;
+    background: rgba(0, 0, 0, 0.35);
+    padding: 30px;
+    border-radius: 12px;
+    color: #fff;
+}
+
+.recensione-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 12px 20px;
+    border-radius: 12px;
+    margin-bottom: 12px;
+    transition: background 0.2s;
+    cursor: pointer;
+}
+
+.recensione-box:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.recensione-box > div {
+    margin-top: 6px;
+}
+
+.recensione-box strong {
+    font-weight: 600;
+}
+
+.recensione-box .tipo {
+    font-size: 0.9rem;
+    color: var(--muted);
+    margin-left: 4px;
+}
+
+.recensione-box .data-creazione {
+    color: var(--muted);
+    font-size: 0.85rem;
+    margin-top: 6px;
+}
+
+.recensione-header {
+    white-space: nowrap;
+    display: inline-block;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.recensione-header .tipo {
+    font-weight: normal;
+}
+
+.btn-chiudi {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--text-color, #fff);
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.btn-chiudi:hover {
+    color: var(--accent-color, #e63946);
+}
+
+section {
+    position: relative; /* serve per posizionare la X dentro la sezione */
+}
+

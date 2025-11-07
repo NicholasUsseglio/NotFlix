@@ -1,0 +1,51 @@
+<!-- FILE: fragments.html -->
+<!DOCTYPE html>
+<html lang="it"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<!-- HEAD -->
+<th:block th:fragment="head(titoloPagina)">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title th:text="${titoloPagina} ?: 'Login - Spring Video'">Login - Spring Video</title>
+
+    <!-- CSS globale -->
+    <link rel="stylesheet" th:href="@{/css/login.css}" >
+        <link rel="stylesheet" th:href="@{/css/styles.css}" />
+
+</th:block>
+
+<!-- HEADER -->
+<th:block th:fragment="header(paginaAttiva)">
+    <header>
+        <div class="topbar">
+            <div class="topbar-inner">
+
+                <!-- logo -->
+                <div class="logo">
+                                    <div class="logo"> <a th:href="@{/}" href="/"> <img th:src="@{/img/logo-font.svg}" alt="logo" /> </a> </div>
+
+                </div>
+
+                
+            </div>
+        </div>
+    </header>
+</th:block>
+
+<!-- FOOTER -->
+<th:block th:fragment="footer">
+    <footer class="footer">
+        <div style="max-width:1200px;margin:0 auto;">
+            <div style="color:var(--white,#fff);font-weight:500;margin-bottom:8px;"> © Spring Video – Tutti i diritti
+                riservati </div>
+            <div style="color:var(--muted,#aaa);font-size:0.8rem;">
+  <a href="https://www.facebook.com" target="_blank" style="color:inherit; text-decoration:underline;">Facebook</a> ·
+  <a href="https://www.instagram.com" target="_blank" style="color:inherit; text-decoration:underline;">Instagram</a> ·
+  <a href="https://www.youtube.com" target="_blank" style="color:inherit; text-decoration:underline;">YouTube</a>
+</div>
+    </footer>
+</th:block>
+
+</html>

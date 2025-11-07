@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="it" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: head('Home - Spring Video')"></head>
+<body>
+    <header th:replace="fragments :: header('index')"></header>
+
+    <main>
+        <!-- HERO -->
+        <section class="hero">
+            <button class="hero-arrow left">‹</button>
+
+            <div class="hero-slider" id="heroSlider">
+                <article class="hero-slide active">
+                    <h2>SERIE TV DEL MOMENTO</h2>
+                    <p>Le serie tv più popolari dell'ultimo mese su Spring Video!</p>
+                    <div class="new-releases">
+        <div class="film-thumb">
+            <img th:src="@{/img/poor.jpg}" src="../static/img/poor.jpg" alt="Dune">
+            <span>Poor Things</span>
+        </div>
+        
+        <div class="film-thumb">
+            <img th:src="@{/img/saw.jpg}" src="../static/img/saw.jpg" alt="Dune">
+            <span>Saw X</span>
+        </div>
+        <div class="film-thumb">
+            <img th:src="@{/img/dune.jpg}" src="../static/img/dune.jpg" alt="Dune">
+            <span>Dune</span>
+        </div>
+        
+        <div class="film-thumb">
+            <img th:src="@{/img/barbie.jpg}" src="../static/img/barbie.jpg" alt="Barbie">
+            <span>Barbie</span>
+        </div>
+        <div class="film-thumb">
+            <img th:src="@{/img/opp.jpg}" src="../static/img/opp.jpg" alt="Oppenheimer">
+            <span>Oppenheimer</span>
+        </div>
+        <div class="film-thumb">
+            <img th:src="@{/img/demon.jpg}" src="../static/img/demon.jpg" alt="Demon-Slayer">
+            <span>Demon Slayer</span>
+        </div>
+        <div class="film-thumb">
+            <img th:src="@{/img/wonka.jpg}" src="../static/img/wonka.jpg" alt="Wonka">
+            <span>Wonka</span>
+        </div>
+    </div>
+                </article>
+
+                <article class="hero-slide">
+    <h2>SCOPRI I NUOVI FILM</h2>
+    <p>I film più attesi disponibili ora su Spring Video!</p>
+
+    <div class="new-releases">
+        <div class="film-thumb">
+            <img th:src="@{/img/poor.jpg}" src="../static/img/poor.jpg" alt="Dune">
+            <span>Poor Things</span>
+        </div>
+        <div class="film-thumb">
+            <img th:src="@{/img/saw.jpg}" src="../static/img/saw.jpg" alt="Dune">
+            <span>Saw X</span>
+        </div>
+        <div class="film-thumb">
+            <img th:src="@{/img/dune.jpg}" src="../static/img/dune.jpg" alt="Dune">
+            <span>Dune</span>
+        </div>
+        
+        <div class="film-thumb">
+            <img th:src="@{/img/barbie.jpg}" src="../static/img/barbie.jpg" alt="Barbie">
+            <span>Barbie</span>
+        </div>
+        <div class="film-thumb">
+            <img th:src="@{/img/opp.jpg}" src="../static/img/opp.jpg" alt="Oppenheimer">
+            <span>Oppenheimer</span>
+        </div>
+        <div class="film-thumb">
+            <img th:src="@{/img/demon.jpg}" src="../static/img/demon.jpg" alt="Demon-Slayer">
+            <span>Demon Slayer</span>
+        </div>
+        <div class="film-thumb">
+            <img th:src="@{/img/wonka.jpg}" src="../static/img/wonka.jpg" alt="Wonka">
+            <span>Wonka</span>
+        </div>
+    </div>
+</article>
+
+
+                <article class="hero-slide">
+                    <h2>FILM DA VEDERE AD HALLOWEEN</h2>
+                    <p>Guarda i film più spaventosi e avvincenti da guardare questo Halloween🎃👻</p>
+                    <div class="new-releases">
+        <div class="film-thumb">
+            <img th:src="@{/img/poor.jpg}" src="../static/img/poor.jpg" alt="Dune">
+            <span>Poor Things</span>
+        </div>
+        <div class="film-thumb">
+            <img th:src="@{/img/saw.jpg}" src="../static/img/saw.jpg" alt="Dune">
+            <span>Saw X</span>
+        </div>
+        <div class="film-thumb">
+            <img th:src="@{/img/dune.jpg}" src="../static/img/dune.jpg" alt="Dune">
+            <span>Dune</span>
+        </div>
+        
+        <div class="film-thumb">
+            <img th:src="@{/img/barbie.jpg}" src="../static/img/barbie.jpg" alt="Barbie">
+            <span>Barbie</span>
+        </div>
+        <div class="film-thumb">
+            <img th:src="@{/img/opp.jpg}" src="../static/img/opp.jpg" alt="Oppenheimer">
+            <span>Oppenheimer</span>
+        </div>
+        <div class="film-thumb">
+            <img th:src="@{/img/demon.jpg}" src="../static/img/demon.jpg" alt="Demon-Slayer">
+            <span>Demon Slayer</span>
+        </div>
+        <div class="film-thumb">
+            <img th:src="@{/img/wonka.jpg}" src="../static/img/wonka.jpg" alt="Wonka">
+            <span>Wonka</span>
+        </div>
+    </div>
+                </article>
+            </div>
+
+            <button class="hero-arrow right">›</button>
+        </section>
+        <section class="film-section">
+  <h2 class="section-title">Film del momento</h2>
+</section>
+
+        <!--film con scorrimento-->
+
+        <section class="films-wrapper">
+  <button class="scroll-btn left">‹</button>
+  <div class="films-scroll">
+    <div class="films-container">
+      <div class="film-card">
+                <div class="film-header">Titanic</div>
+                <div class="film-body">
+                    <div class="poster-placeholder"><img th:src="@{/img/titanic.png}" src="../static/img/titanic.png"></div>
+                    <p>La storia d’amore tra Jack e Rose, due passeggeri di classi sociali diverse, si svolge a bordo del tragico transatlantico Titanic. Una vicenda romantica e drammatica ambientata nel famoso naufragio del 1912.</p>
+                </div>
+            </div>
+            <div class="film-card">
+                <div class="film-header">Forrest Gump</div>
+                <div class="film-body">
+                    <div class="poster-placeholder"><img th:src="@{/img/forrest.jpg}" src="../static/img/forrest.jpg"></div>
+                    <p>Racconta la vita straordinaria di Forrest, un uomo semplice con una mente speciale. Tra eventi storici e successi personali, il suo cuore puro lascia il segno su chi lo circonda.</p>
+                </div>
+            </div>
+            <div class="film-card">
+                <div class="film-header">Inception</div>
+                <div class="film-body">
+                    <div class="poster-placeholder"><img th:src="@{/img/inception.jpg}" src="../static/img/inception.jpg"></div>
+                    <p>Un ladro esperto entra nei sogni delle persone per rubare segreti nascosti nella mente. Una storia complessa che mescola realtà e sogno, esplorando il potere della mente e della percezione.</p>
+                </div>
+            </div>
+            <div class="film-card">
+                <div class="film-header">Pulp fiction</div>
+                <div class="film-body">
+                    <div class="poster-placeholder"><img th:src="@{/img/pulp.jpg}" src="../static/img/pulp.jpg"></div>
+                    <p>Una serie di storie intrecciate di criminali, gangster e personaggi eccentrici nella Los Angeles degli anni ’90. Caratterizzato da dialoghi memorabili, violenza stilizzata e ironia nera.</p>
+                </div>
+            </div>
+            <div class="film-card">
+                <div class="film-header">Avatar</div>
+                <div class="film-body">
+                    <div class="poster-placeholder"><img th:src="@{/img/avatar.jpg}" src="../static/img/avatar.jpg"></div>
+                    <p>Su Pandora, un mondo alieno ricco di natura e cultura indigena, un umano cerca di integrarsi tra i Na’vi. Una storia epica di amore, conflitto e tutela dell’ambiente, con effetti visivi rivoluzionari.</p>
+                </div>
+            </div>
+            <div class="film-card">
+                <div class="film-header">Matrix</div>
+                <div class="film-body">
+                    <div class="poster-placeholder"><img th:src="@{/img/matrix.jpg}" src="../static/img/matrix.jpg"></div>
+                    <p>Neo scopre che la realtà è una simulazione controllata da macchine intelligenti. Combattimenti spettacolari e filosofia sulla libertà e l’illusione rendono il film un cult della fantascienza.</p>
+                </div>
+            </div>
+            <div class="film-card">
+                <div class="film-header">Il cavaliere oscuro</div>
+                <div class="film-body">
+                    <div class="poster-placeholder"><img th:src="@{/img/cavaliere.jpg}" src="../static/img/cavaliere.jpg"></div>
+                    <p>Batman affronta il Joker, un criminale psicopatico che semina caos a Gotham. Un thriller oscuro che esplora il confine tra giustizia e vendetta.</p>
+                </div>
+            </div>
+            <div class="film-card">
+                <div class="film-header">Shutter Island</div>
+                <div class="film-body">
+                    <div class="poster-placeholder"><img th:src="@{/img/island.jpg}" src="../static/img/island.jpg"></div>
+                    <p>Due agenti investigano la scomparsa di una paziente in un ospedale psichiatrico su un’isola remota. Un thriller psicologico pieno di mistero e colpi di scena che mette in dubbio la realtà stessa.</p>
+                </div>
+            </div>
+            <div class="film-card">
+                <div class="film-header">Toy Story</div>
+                <div class="film-body">
+                    <div class="poster-placeholder"><img th:src="@{/img/toy.jpg}" src="../static/img/toy.jpg"></div>
+                    <p>I giocattoli di Andy prendono vita quando nessuno li osserva, guidati da Woody e Buzz Lightyear. Un’avventura divertente e commovente che parla di amicizia e crescita.</p>
+                </div>
+            </div>
+            <div class="film-card">
+                <div class="film-header">Fight Club</div>
+                <div class="film-body">
+                    <div class="poster-placeholder"><img th:src="@{/img/fight.jpg}" src="../static/img/fight.jpg"></div>
+                    <p>Un uomo insoddisfatto della sua vita crea un club clandestino di lotta insieme a Tyler Durden. Un film provocatorio che esplora identità, consumismo e ribellione contro la società.</p>
+                </div>
+            </div>
+    </div>
+  </div>
+  <button class="scroll-btn right">›</button>
+</section>
+
+        
+
+
+        <!-- FILM -->
+        <section class="films">
+            <div class="film-card">
+                <div class="film-header">FILM 1</div>
+                <div class="film-body">
+                    <div class="poster-placeholder">Poster</div>
+                    <p>Breve descrizione del film 1.</p>
+                </div>
+            </div>
+            <div class="film-card">
+                <div class="film-header">FILM 2</div>
+                <div class="film-body">
+                    <div class="poster-placeholder">Poster</div>
+                    <p>Breve descrizione del film 2.</p>
+                </div>
+            </div>
+            <div class="film-card">
+                <div class="film-header">FILM 3</div>
+                <div class="film-body">
+                    <div class="poster-placeholder">Poster</div>
+                    <p>Breve descrizione del film 3.</p>
+                </div>
+            </div>
+            <div class="film-card">
+                <div class="film-header">FILM 4</div>
+                <div class="film-body">
+                    <div class="poster-placeholder">Poster</div>
+                    <p>Breve descrizione del film 4.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT -->
+        <section class="about">
+            <h3>CHI SIAMO</h3>
+            <p>Piattaforma di lancio per case di produzione emergenti. Proponiamo film in promozione e abbonamenti esclusivi.</p>
+            <button class="cta">Scopri di più</button>
+        </section>
+    </main>
+
+    <footer th:replace="fragments :: footer"></footer>
+
+    <script>
+        // Mini carosello
+        (function(){
+            const slides = Array.from(document.querySelectorAll('.hero-slide'));
+            let i = 0;
+            const show = idx => slides.forEach((s,j)=>s.classList.toggle('active',j===idx));
+            document.querySelector('.hero-arrow.left')
+                .addEventListener('click',()=>{i=(i-1+slides.length)%slides.length;show(i)});
+            document.querySelector('.hero-arrow.right')
+                .addEventListener('click',()=>{i=(i+1)%slides.length;show(i)});
+            setInterval(()=>{i=(i+1)%slides.length;show(i)},8000);
+        })();
+    </script>
+
+   <script>
+  const scrollContainer = document.querySelector('.films-scroll');
+  const btnLeft = document.querySelector('.scroll-btn.left');
+  const btnRight = document.querySelector('.scroll-btn.right');
+  const scrollAmount = 625;
+
+  btnLeft.addEventListener('click', () => {
+    scrollContainer.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+  });
+
+  btnRight.addEventListener('click', () => {
+    const maxScrollLeft = scrollContainer.scrollWidth - scrollContainer.clientWidth;
+    if (scrollContainer.scrollLeft >= maxScrollLeft - 10) {
+      // Se siamo alla fine, torna all'inizio
+      scrollContainer.scrollTo({ left: 0, behavior: 'smooth' });
+    } else {
+      scrollContainer.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    }
+  });
+
+  setInterval(() => {
+    const maxScrollLeft = scrollContainer.scrollWidth - scrollContainer.clientWidth;
+    if (scrollContainer.scrollLeft >= maxScrollLeft - 10) {
+      scrollContainer.scrollTo({ left: 0, behavior: 'smooth' });
+    } else {
+      scrollContainer.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    }
+  }, 10000);
+</script>
+
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+

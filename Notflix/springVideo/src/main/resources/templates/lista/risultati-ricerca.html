@@ -1,0 +1,235 @@
+ <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head th:replace="~{fragments :: head(${titoloPagina})}">
+<!-- 
+se voglio dare template ai diversi tipi di risultati
+<div th:replace="fragments :: cardFilm" th:if="${tipo == 'film'}"></div>
+<div th:replace="fragments :: cardSerie" th:if="${tipo == 'serie'}"></div>
+
+-->
+
+
+</head>
+
+<body>
+<link rel="stylesheet" th:href="@{/css/style-risultati-ricerca.css}"/>
+
+<header th:replace="~{fragments :: header('catalogo')}"></header>
+
+<!--CATEGORIE DI RICERCA-->
+<section  id="filtri">
+      
+
+       <div class="filter" style="height: auto;">
+             <a class="nav-pill"
+              th:classappend="${tipo == 'film' ? 'nav-pill-active' : ''}"
+              th:href="@{/ricerca/catalogo(tipo='film', genere=${genereSelezionato})}">
+              Film
+            </a>
+
+            <a class="nav-pill"
+              th:classappend="${tipo == 'serietv' ? 'nav-pill-active' : ''}"
+              th:href="@{/ricerca/catalogo(tipo='serietv', genere=${genereSelezionato})}">
+              Serie TV
+            </a>
+
+            <!--<a class="nav-pill"
+              th:classappend="${tipo == 'podcast' ? 'nav-pill-active' : ''}"
+              th:href="@{/ricerca/catalogo(tipo='podcast', genere=${genereSelezionato})}">
+              Podcast
+            </a>-->
+
+          <!-- NON SO SE RIESCO A IMPLEMENTARLI, VEDIAMO
+         <a class="nav-pill nav-pill-active" 
+          style="margin:20px;background:rgba(255,255,255,0.05);border-radius:12px;overflow:hidden;text-align:center;"
+           th:href="@{/ricerca/catalogo(tipo='attori')}">Lista Attori  </a>
+            <a class="nav-pill nav-pill-active" 
+          style="margin:20px; background:rgba(255,255,255,0.05);border-radius:12px;overflow:hidden;text-align:center;"
+          th:href="@{/ricerca/catalogo(tipo='registi')}">Lista Registi  </a>
+          
+         -->  
+        </div>
+        <!-- Filtro per genere -->
+ 
+        <div  class="filter">
+            <div><h2> Generi </h2></div>
+              <a class="nav-pill"
+              th:classappend="${genereSelezionato == 'Action & Adventure' ? 'nav-pill-active' : ''}"
+              th:href="@{/ricerca/catalogo(tipo=${tipo}, genere='Action & Adventure')}">
+              Azione
+            </a>
+
+            <a class="nav-pill"
+              th:classappend="${genereSelezionato == 'Dramas' ? 'nav-pill-active' : ''}"
+              th:href="@{/ricerca/catalogo(tipo=${tipo}, genere='Dramas')}">
+              Dramma
+            </a>
+
+            <a class="nav-pill"
+              th:classappend="${genereSelezionato == 'Comedies' ? 'nav-pill-active' : ''}"
+              th:href="@{/ricerca/catalogo(tipo=${tipo}, genere='Comedies')}">
+              Commedia
+            </a>
+
+              <a class="nav-pill"
+              th:classappend="${genereSelezionato == 'Thrillers' ? 'nav-pill-active' : ''}"
+              th:href="@{/ricerca/catalogo(tipo=${tipo}, genere='Thrillers')}">
+              Thriller
+            </a>
+
+            <a class="nav-pill"
+              th:classappend="${genereSelezionato == 'Documentaries' ? 'nav-pill-active' : ''}"
+              th:href="@{/ricerca/catalogo(tipo=${tipo}, genere='Documentaries')}">
+              Documentario
+            </a>
+
+            <a class="nav-pill"
+              th:classappend="${genereSelezionato == 'Children & Family Movies' ? 'nav-pill-active' : ''}"
+              th:href="@{/ricerca/catalogo(tipo=${tipo}, genere='Children & Family Movies')}">
+              Animazione
+            </a>
+              
+
+          </div>
+    </section>
+
+
+
+
+
+<h2 th:text="${titoloPagina}" style="margin: auto;  font-size: 30px;max-height: 80px;">Catalogo</h2>
+
+
+<!-- Debug info -->
+<div th:if="${contenuti == null}">
+    <p>Nessun contenuto trovato (contenuti è null)</p>
+</div>
+<div th:if="${contenuti != null and contenuti.empty}">
+    <p>Nessun contenuto trovato (lista vuota)</p>
+</div>
+
+
+<!-- Risultati -->
+<div class="content-grid">
+    <div th:each="item : ${contenuti}" class="content-card" th:switch="${item.tipo}">
+        
+        <a th:case="'film'" th:href="@{/film/{id}(id=${item.id})}" >
+            <div class="content-info" >
+                <h3 th:text="${item.titolo}">Titolo</h3>
+                <p th:if="${item.trama}" th:text="${item.trama}">Trama</p>
+                <div class="content-metadata">
+                    <span th:if="${item.genere}" th:text="${item.genere}">Genere</span>
+                    <span th:if="${item.durata}" th:text="|${item.durata} min|">Durata</span>
+                </div>
+            </div>
+        </a>
+
+        <a th:case="'serietv'" th:href="@{/serietv/{id}(id=${item.id})}">
+    <div class="content-info">
+        <h3 th:text="${item.titolo}">Titolo</h3>
+        <p th:if="${item.trama}" th:text="${item.trama}">Trama</p>
+        <div class="content-metadata">
+            <span th:if="${item.genere}" th:text="${item.genere}">Genere</span>
+
+            <!-- ✅ Proteggi con instanceof SerieTV -->
+            <span th:if="${item instanceof T(com.notflix.springVideo.entities.SerieTV)}"
+                  th:text="|Episodi: ${item.numeroEpisodi}|">
+            </span>
+            <span th:if="${item instanceof T(com.notflix.springVideo.entities.SerieTV)}"
+                  th:text="|Stagioni: ${item.numeroStagioni}|">
+            </span>
+        </div>
+    </div>
+</a>
+
+        <a th:case="'podcast'" th:href="@{/podcast/{id}(id=${item.id})}">
+            <div class="content-info">
+                <h3 th:text="${item.titolo}">Titolo</h3>
+                <p th:if="${item.trama}" th:text="${item.trama}">Trama</p>
+                <div class="content-metadata">
+                    <span th:if="${item.genere}" th:text="${item.genere}">Genere</span>
+                </div>
+            </div>
+        </a>
+
+    </div>
+</div>
+
+  </div>
+</div>
+
+<div class="pagination">
+  <ul>
+    <li th:if="${currentPage > 0}">
+      <a th:href="@{/ricerca/catalogo(tipo=${tipo}, genere=${genereSelezionato}, page=${currentPage - 1}, size=${param.size ?: 20})}">« Precedente</a>
+    </li>
+
+    <!-- mostra al massimo 7 pagine centrate sulla currentPage -->
+   <li th:each="i : ${#numbers.sequence(
+    (currentPage != null ? (currentPage - 3) : 0) < 0 ? 0 : (currentPage != null ? (currentPage - 3) : 0),
+    (totalPages != null ? (currentPage + 3) : 0) >= (totalPages != null ? totalPages : 1) ? 
+       ((totalPages != null ? totalPages : 1) - 1) : (currentPage != null ? (currentPage + 3) : 0)
+)}">
+      <a th:classappend="${i == currentPage} ? 'active' : ''"
+         th:href="@{/ricerca/catalogo(tipo=${tipo}, genere=${genereSelezionato}, page=${i}, size=${param.size ?: 20})}"
+         th:text="${i + 1}">1</a>
+    </li>
+
+    <li th:if="${currentPage + 1 < totalPages}">
+      <a th:href="@{/ricerca/catalogo(tipo=${tipo}, genere=${genereSelezionato}, page=${currentPage + 1}, size=${param.size ?: 20})}">Successiva »</a>
+    </li>
+  </ul>
+</div>
+
+
+<footer th:replace="~{fragments :: footer}"></footer>
+</body>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    // Catalogo
+    const catalogoBtn = document.getElementById('catalogoBtn');
+    const catalogoMenu = document.getElementById('catalogoMenu');
+
+    if (catalogoBtn && catalogoMenu) {
+        catalogoBtn.addEventListener('click', function (event) {
+            event.stopPropagation();
+            const isVisible = catalogoMenu.style.display === 'block';
+            catalogoMenu.style.display = isVisible ? 'none' : 'block';
+        });
+
+        document.addEventListener('click', function (event) {
+            if (!catalogoBtn.contains(event.target)) {
+                catalogoMenu.style.display = 'none';
+            }
+        });
+    }
+
+    // Utente
+    const utenteBtn = document.getElementById('utenteBtn');
+    const utenteMenu = document.getElementById('utenteMenu');
+
+    if (utenteBtn && utenteMenu) {
+        utenteBtn.addEventListener('click', function (event) {
+            event.stopPropagation();
+            const isVisible = utenteMenu.style.display === 'block';
+            utenteMenu.style.display = isVisible ? 'none' : 'block';
+        });
+
+        document.addEventListener('click', function (event) {
+            if (!utenteBtn.contains(event.target)) {
+                utenteMenu.style.display = 'none';
+            }
+        });
+    }
+});
+const logoutTrigger = document.getElementById('logoutTrigger');
+const logoutForm = document.getElementById('logoutForm');
+
+if (logoutTrigger && logoutForm) {
+    logoutTrigger.addEventListener('click', function () {
+        logoutForm.submit();
+    });
+}
+
+</script>
+</html>

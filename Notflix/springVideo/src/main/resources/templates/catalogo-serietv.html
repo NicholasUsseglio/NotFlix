@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="it"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="fragments :: head('Catalogo Serie TV')">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catalogo Serie TV</title>
+    <link rel="stylesheet" href="../static/css/catalogoserieTv.css" />
+</head>
+
+<body>
+
+<header th:replace="fragments :: header('serietv')"></header>
+
+<main class="main serietv-catalogo">
+
+    <!-- Titolo Catalogo + barra ricerca -->
+    <section class="catalog-header">
+        <h2>CATALOGO</h2>
+
+        <form id="searchBar" action="/serietv/cerca" method="get">
+            <input type="text" name="titolo" placeholder="Cerca serie TV...">
+            <button type="submit" class="btn">🔍</button>
+        </form>
+    </section>
+
+    <!--Filtri categoria -->
+    <section class="filters">
+        <button class="filter-btn" onclick="filterBy('commedia')">Commedie</button>
+        <button class="filter-btn" onclick="filterBy('thriller')">Thriller</button>
+        <button class="filter-btn" onclick="filterBy('drama')">Drama</button>
+        <button class="filter-btn active" onclick="filterBy('serietv')">APOCALIPSE</button>
+        <button class="filter-btn" onclick="filterBy('cartone')">Cartoni</button>
+        <button class="filter-btn" onclick="filterBy('documentario')">Docu</button>
+    </section>
+
+    <!-- RISULTATI SERIE TV -->
+    <section class="serietv-list">
+        <h3>Risultati</h3>
+
+        <div class="results-grid">
+            <div th:each="serie : ${lista}" class="result-card">
+                <a th:href="|/serietv/${serie.id}|">
+                    <div class="poster-placeholder small"></div>
+                    <p th:text="${serie.titolo}">Titolo</p>
+                </a>
+            </div>
+
+            <p class="muted"
+               th:if="${lista == null or #lists.isEmpty(lista)}">
+                Nessuna serie TV trovata
+            </p>
+        </div>
+    </section>
+
+    <!-- CATEGORIE IN EVIDENZA -->
+    <section class="highlight-categories">
+        <h3>ALTRE CATEGORIE <span style="font-weight:600;">IN EVIDENZA</span></h3>
+
+        <div class="category-box">
+            <p>Consigliati, Nuove Uscite, Top Rating...</p>
+        </div>
+    </section>
+
+</main>
+
+<footer th:replace="fragments :: footer"></footer>
+
+<script src="/js/catalogo-serietv.js" defer></script>
+
+</body>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    // Catalogo
+    const catalogoBtn = document.getElementById('catalogoBtn');
+    const catalogoMenu = document.getElementById('catalogoMenu');
+
+    if (catalogoBtn && catalogoMenu) {
+        catalogoBtn.addEventListener('click', function (event) {
+            event.stopPropagation();
+            const isVisible = catalogoMenu.style.display === 'block';
+            catalogoMenu.style.display = isVisible ? 'none' : 'block';
+        });
+
+        document.addEventListener('click', function (event) {
+            if (!catalogoBtn.contains(event.target)) {
+                catalogoMenu.style.display = 'none';
+            }
+        });
+    }
+
+    // Utente
+    const utenteBtn = document.getElementById('utenteBtn');
+    const utenteMenu = document.getElementById('utenteMenu');
+
+    if (utenteBtn && utenteMenu) {
+        utenteBtn.addEventListener('click', function (event) {
+            event.stopPropagation();
+            const isVisible = utenteMenu.style.display === 'block';
+            utenteMenu.style.display = isVisible ? 'none' : 'block';
+        });
+
+        document.addEventListener('click', function (event) {
+            if (!utenteBtn.contains(event.target)) {
+                utenteMenu.style.display = 'none';
+            }
+        });
+    }
+});
+const logoutTrigger = document.getElementById('logoutTrigger');
+const logoutForm = document.getElementById('logoutForm');
+
+if (logoutTrigger && logoutForm) {
+    logoutTrigger.addEventListener('click', function () {
+        logoutForm.submit();
+    });
+}
+
+</script>
+</html>

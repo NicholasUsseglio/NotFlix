@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="it" 
+xmlns:th="http://www.thymeleaf.org" 
+xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="fragmentslogin :: head('Iscriviti - Spring Video')">
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+        <title>Login</title>
+        <link rel="stylesheet" href="../static/css/login.css" />
+</head>
+
+<body>
+    <header th:replace="fragmentslogin :: header('register')">
+        <!-- fallback statico header -->
+    <div class="topbar" style="display:flex;align-items:center;justify-content:flex-start;padding:12px 16px;max-width:1200px;margin:0 auto;">
+        <div class="logo">
+            <a href="/" style="display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--white,#fff);font-weight:600;">
+                <img src="../static/img/logo.png" alt="logo" style="width:32px;height:32px;border-radius:4px;"/>
+                <span>Spring Video</span>
+            </a>
+        </div>
+        <nav></nav>
+    </div>
+</header>
+
+<main>
+     <section class="nav" style="margin: 30px;">
+        <a href="/auth/admin" class="nav-pill">← Indietro</a>
+        
+    </section>
+    <div class="login-container">
+        <h2>Carica un Film</h2>
+        <form th:action="@{/auth/register}" method="post">
+            <div class="form-group">
+                <label for="nome">&nbsp;&nbsp;&nbsp;Titolo</label>
+                <input type="text" id="nome" name="nome" placeholder="Inserisci nome" required />
+            </div>
+            <div class="form-group">
+                <label for="cognome">&nbsp;&nbsp;&nbsp;Genere</label>
+                <input type="text" id="cognome" name="cognome" placeholder="Inserisci cognome" required />
+            </div>
+
+            <div class="form-group" style="    margin-bottom: -22px;">
+           <label for="annoUscita" > &nbsp;&nbsp;&nbsp;Anno di Uscita:</label>
+                <select name="annoUscita" id="annoUscita" required>
+                    <option th:each="anno : ${#numbers.sequence(1980, #temporals.createNow().year)}"
+                            th:value="${anno}"
+                            th:text="${anno}">
+                    </option>
+                </select>
+            </div>
+            <div class="form-group">
+            <label for="email">&nbsp;&nbsp;&nbsp;Genere</label>
+            <input type="email" id="email" name="email" placeholder="Inserisci Email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="username">&nbsp;&nbsp;&nbsp;Durata</label>
+                <input type="text" id="username" name="username" placeholder="Inserisci username" required />
+            </div>
+
+           
+
+  
+  <div class="checkbox-container">
+      <input type="checkbox" name="data-treatment" required>
+      <label for="data-treatment">
+        Confermo l'accettazione delle clausule per il copyright e
+        <a href="https://www.youtube.com/watch?v=VT15kkBda60" target="_blank">privacy policy</a>.
+      </label>
+    </div>
+  
+
+
+
+
+
+
+            <!-- <label for="check_password">Controlla Password</label>
+            <input type="password" name="check_password" id="check_password" required> -->
+            <div class="form-group">
+            <button type="submit" class="btn" style="margin-top: 15px;">Carica</button>
+            </div>
+
+            <!-- MESSAGGI DI ERRORE O SUCCESSO -->
+        <div th:if="${errore}" class="error">
+            <p th:text="${errore}"></p>
+        </div>
+        <div th:if="${messaggio}" class="success" id="successMessage">
+            <p th:text="${messaggio}"></p>
+        </div>
+
+
+        </form>
+
+
+
+    </main>
+    <footer th:replace="fragmentslogin :: footer"></footer>
+</body>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Controlla se c'è il messaggio di successo
+        const successMessage = document.getElementById('successMessage');
+        
+        if (successMessage) {
+            console.log('Messaggio di successo trovato!');  // Debug
+            setTimeout(function() {
+                console.log('Redirigo alla pagina di login...');  // Debug
+                window.location.href = '/auth/login';  // Reindirizza alla pagina di login
+            }, 4000);
+        } else {
+            console.log('Messaggio di successo non trovato');  // Debug
+        }
+    });
+</script>
+ 
+</html>

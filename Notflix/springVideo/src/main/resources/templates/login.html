@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="it"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="fragmentslogin :: head('Login - Spring Video')">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" href="../static/css/login.css" />
+</head>
+
+<body>
+<header th:replace="fragmentslogin :: header('login')">
+    <!-- fallback statico header -->
+    <div class="topbar" style="display:flex;align-items:center;justify-content:flex-start;padding:12px 16px;max-width:1200px;margin:0 auto;">
+        <div class="logo">
+            <a href="/" style="display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--white,#fff);font-weight:600;">
+                <img src="../static/img/logo.png" alt="logo" style="width:32px;height:32px;border-radius:4px;" />
+                <span>Spring Video</span>
+            </a>
+        </div>
+        <nav></nav>
+    </div>
+</header>
+
+<main>
+    <section class="nav" style="margin: 30px;">
+        <a href="/auth/admin" class="nav-pill">← Indietro</a>
+        
+    </section>
+    <div class="login-container">
+        <h2>Accedi al tuo account</h2>
+        <form th:action="@{/auth/login}" method="post">
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+            <div class="form-group">
+                <label for="username">&nbsp;&nbsp;&nbsp;Username</label>
+                <input type="text" id="username" name="username" placeholder="Inserisci username" required />
+            </div>
+            <div class="form-group">
+                <label for="password">&nbsp;&nbsp;&nbsp;Password</label>
+                <input type="password" id="password" name="password" placeholder="Inserisci password" required />
+            </div>
+            <div class="form-group">
+                <button type="submit">Login</button>
+            </div>
+
+            <!-- Messaggi di errore / successo -->
+             <div th:if="${messaggio}" class="success" id="loginSuccessMessage">
+                <p th:text="${messaggio}"></p>
+            </div>
+    <div th:if="${param.error}" class="error">
+        <p th:text="${session.SPRING_SECURITY_LAST_EXCEPTION?.message != null ? session.SPRING_SECURITY_LAST_EXCEPTION.message : 'Credenziali non valide'}"></p>
+    </div>
+
+    <div th:if="${param.logout}" class="success" id="successLogout">
+        <p>Logout effettuato con successo.</p><p th:text="Logout effettuato con successo."></p>
+    </div>
+
+        </form>
+
+        <!-- Link Registrazione -->
+       <div style="margin-top:16px; text-align:center;">
+    <span style="color: var(--muted,#aaa); font-size:0.9rem;">Non hai un account?</span>
+    <div style="margin-top:8px; display:block;">
+        <a href="/auth/register" 
+           style="color: var(--white,#fff); 
+                  font-weight:600; 
+                  text-decoration:none; 
+                  font-size:1rem;">
+            Registrati
+        </a>
+    </div>
+</div>
+
+</div>
+
+</div>
+</main>
+
+<footer th:replace="fragmentslogin :: footer">
+    <!-- fallback statico -->
+    <div>
+        © Spring Video – Tutti i diritti riservati
+    </div>
+</footer>
+</body>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Controlla se c'è il messaggio di successo del login
+        const loginSuccessMessage = document.getElementById('loginSuccessMessage');
+        
+        if (loginSuccessMessage) {
+            console.log('Login riuscito!');  // Debug
+            setTimeout(function() {
+                console.log('Redirigo alla home...');  // Debug
+                window.location.href = '/';  // Reindirizza alla home page
+            }, 4000);
+        } else {
+            console.log('Login non riuscito');  // Debug
+        }
+    });
+</script>
+
+</html>

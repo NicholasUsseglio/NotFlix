@@ -1,0 +1,228 @@
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::staticFieldBase has been called by com.google.inject.internal.aop.HiddenClassDefiner (file:/C:/Users/rikpi/.m2/wrapper/dists/apache-maven-3.9.11/03d7e36a140982eea48e22c1dcac01d8862b2550b2939e09a0809bbc5182a5bc/lib/guice-5.1.0-classes.jar)
+WARNING: Please consider reporting this to the maintainers of class com.google.inject.internal.aop.HiddenClassDefiner
+WARNING: sun.misc.Unsafe::staticFieldBase will be removed in a future release
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ----------------------< com.notflix:springVideo >-----------------------
+[INFO] Building springVideo 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] >>> spring-boot:3.5.7:run (default-cli) > test-compile @ springVideo >>>
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ springVideo ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] Copying 44 resources from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.14.1:compile (default-compile) @ springVideo ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ springVideo ---
+[INFO] skip non existing resourceDirectory C:\Users\rikpi\Desktop\VS WORKSPACE\PROJECT WORK\Notflix\springVideo\src\test\resources
+[INFO] 
+[INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ springVideo ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] <<< spring-boot:3.5.7:run (default-cli) < test-compile @ springVideo <<<
+[INFO] 
+[INFO] 
+[INFO] --- spring-boot:3.5.7:run (default-cli) @ springVideo ---
+[INFO] Attaching agents: []
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.5.7)
+
+2025-10-30T10:28:02.196+01:00  INFO 30392 --- [springVideo] [  restartedMain] c.n.springVideo.SpringVideoApplication   : Starting SpringVideoApplication using Java 25 with PID 30392 (C:\Users\rikpi\Desktop\VS WORKSPACE\PROJECT WORK\Notflix\springVideo\target\classes started by rikpi in C:\Users\rikpi\Desktop\VS WORKSPACE\PROJECT WORK\Notflix\springVideo)
+2025-10-30T10:28:02.198+01:00 DEBUG 30392 --- [springVideo] [  restartedMain] c.n.springVideo.SpringVideoApplication   : Running with Spring Boot v3.5.7, Spring v6.2.12
+2025-10-30T10:28:02.198+01:00  INFO 30392 --- [springVideo] [  restartedMain] c.n.springVideo.SpringVideoApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-10-30T10:28:02.223+01:00  INFO 30392 --- [springVideo] [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-10-30T10:28:02.223+01:00  INFO 30392 --- [springVideo] [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-10-30T10:28:02.598+01:00  INFO 30392 --- [springVideo] [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-10-30T10:28:02.650+01:00  INFO 30392 --- [springVideo] [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 45 ms. Found 9 JPA repository interfaces.
+2025-10-30T10:28:02.978+01:00  INFO 30392 --- [springVideo] [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-10-30T10:28:02.986+01:00  INFO 30392 --- [springVideo] [  restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-10-30T10:28:02.986+01:00  INFO 30392 --- [springVideo] [  restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.48]
+2025-10-30T10:28:03.018+01:00  INFO 30392 --- [springVideo] [  restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-10-30T10:28:03.019+01:00  INFO 30392 --- [springVideo] [  restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 795 ms
+2025-10-30T10:28:03.110+01:00  INFO 30392 --- [springVideo] [  restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-10-30T10:28:03.146+01:00  INFO 30392 --- [springVideo] [  restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.33.Final
+2025-10-30T10:28:03.164+01:00  INFO 30392 --- [springVideo] [  restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-10-30T10:28:03.324+01:00  INFO 30392 --- [springVideo] [  restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-10-30T10:28:03.340+01:00  INFO 30392 --- [springVideo] [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-10-30T10:28:03.455+01:00  INFO 30392 --- [springVideo] [  restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2337d670
+2025-10-30T10:28:03.456+01:00  INFO 30392 --- [springVideo] [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-10-30T10:28:03.481+01:00  WARN 30392 --- [springVideo] [  restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-10-30T10:28:03.490+01:00  INFO 30392 --- [springVideo] [  restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 8.0.43
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-10-30T10:28:04.031+01:00  INFO 30392 --- [springVideo] [  restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-10-30T10:28:04.094+01:00  INFO 30392 --- [springVideo] [  restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-10-30T10:28:04.216+01:00  INFO 30392 --- [springVideo] [  restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-10-30T10:28:04.643+01:00  WARN 30392 --- [springVideo] [  restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-10-30T10:28:04.654+01:00  INFO 30392 --- [springVideo] [  restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2025-10-30T10:28:04.694+01:00 DEBUG 30392 --- [springVideo] [  restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 77 mappings in 'requestMappingHandlerMapping'
+2025-10-30T10:28:04.731+01:00 DEBUG 30392 --- [springVideo] [  restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2025-10-30T10:28:04.742+01:00  INFO 30392 --- [springVideo] [  restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name com.notflix.springVideo.services.UtenteService$CustomUserDetailsService
+2025-10-30T10:28:04.792+01:00 DEBUG 30392 --- [springVideo] [  restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, CsrfFilter, LogoutFilter, UsernamePasswordAuthenticationFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, ExceptionTranslationFilter, AuthorizationFilter
+2025-10-30T10:28:04.820+01:00 DEBUG 30392 --- [springVideo] [  restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2025-10-30T10:28:04.860+01:00 DEBUG 30392 --- [springVideo] [  restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2025-10-30T10:28:04.924+01:00  INFO 30392 --- [springVideo] [  restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-10-30T10:28:04.947+01:00  INFO 30392 --- [springVideo] [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-10-30T10:28:04.952+01:00  INFO 30392 --- [springVideo] [  restartedMain] c.n.springVideo.SpringVideoApplication   : Started SpringVideoApplication in 2.981 seconds (process running for 3.238)
+Checking if database needs initialization...
+2025-10-30T10:28:04.987+01:00 DEBUG 30392 --- [springVideo] [  restartedMain] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        film f1_0
+Hibernate: 
+    select
+        count(*) 
+    from
+        film f1_0
+2025-10-30T10:29:28.703+01:00  INFO 30392 --- [springVideo] [   File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2025-10-30T10:29:28.705+01:00  INFO 30392 --- [springVideo] [       Thread-5] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-10-30T10:29:28.709+01:00  INFO 30392 --- [springVideo] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-10-30T10:29:28.712+01:00  INFO 30392 --- [springVideo] [       Thread-5] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-10-30T10:29:28.713+01:00  INFO 30392 --- [springVideo] [       Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-10-30T10:29:28.717+01:00  INFO 30392 --- [springVideo] [       Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.5.7)
+
+2025-10-30T10:29:28.759+01:00  INFO 30392 --- [springVideo] [  restartedMain] c.n.springVideo.SpringVideoApplication   : Starting SpringVideoApplication using Java 25 with PID 30392 (C:\Users\rikpi\Desktop\VS WORKSPACE\PROJECT WORK\Notflix\springVideo\target\classes started by rikpi in C:\Users\rikpi\Desktop\VS WORKSPACE\PROJECT WORK\Notflix\springVideo)
+2025-10-30T10:29:28.759+01:00 DEBUG 30392 --- [springVideo] [  restartedMain] c.n.springVideo.SpringVideoApplication   : Running with Spring Boot v3.5.7, Spring v6.2.12
+2025-10-30T10:29:28.759+01:00  INFO 30392 --- [springVideo] [  restartedMain] c.n.springVideo.SpringVideoApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-10-30T10:29:28.887+01:00  INFO 30392 --- [springVideo] [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-10-30T10:29:28.905+01:00  INFO 30392 --- [springVideo] [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 17 ms. Found 9 JPA repository interfaces.
+2025-10-30T10:29:28.953+01:00  INFO 30392 --- [springVideo] [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-10-30T10:29:28.955+01:00  INFO 30392 --- [springVideo] [  restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-10-30T10:29:28.955+01:00  INFO 30392 --- [springVideo] [  restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.48]
+2025-10-30T10:29:28.972+01:00  INFO 30392 --- [springVideo] [  restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-10-30T10:29:28.973+01:00  INFO 30392 --- [springVideo] [  restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 213 ms
+2025-10-30T10:29:28.990+01:00  INFO 30392 --- [springVideo] [  restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-10-30T10:29:28.992+01:00  INFO 30392 --- [springVideo] [  restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-10-30T10:29:28.997+01:00  INFO 30392 --- [springVideo] [  restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-10-30T10:29:28.997+01:00  INFO 30392 --- [springVideo] [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2025-10-30T10:29:29.002+01:00  INFO 30392 --- [springVideo] [  restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2efbdec8
+2025-10-30T10:29:29.002+01:00  INFO 30392 --- [springVideo] [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2025-10-30T10:29:29.003+01:00  WARN 30392 --- [springVideo] [  restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-10-30T10:29:29.003+01:00  INFO 30392 --- [springVideo] [  restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-2)']
+	Database driver: undefined/unknown
+	Database version: 8.0.43
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-10-30T10:29:29.064+01:00  INFO 30392 --- [springVideo] [  restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-10-30T10:29:29.100+01:00  INFO 30392 --- [springVideo] [  restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-10-30T10:29:29.206+01:00  WARN 30392 --- [springVideo] [  restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-10-30T10:29:29.210+01:00  INFO 30392 --- [springVideo] [  restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2025-10-30T10:29:29.218+01:00 DEBUG 30392 --- [springVideo] [  restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 77 mappings in 'requestMappingHandlerMapping'
+2025-10-30T10:29:29.233+01:00 DEBUG 30392 --- [springVideo] [  restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2025-10-30T10:29:29.236+01:00  INFO 30392 --- [springVideo] [  restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name com.notflix.springVideo.services.UtenteService$CustomUserDetailsService
+2025-10-30T10:29:29.243+01:00 DEBUG 30392 --- [springVideo] [  restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, CsrfFilter, LogoutFilter, UsernamePasswordAuthenticationFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, ExceptionTranslationFilter, AuthorizationFilter
+2025-10-30T10:29:29.251+01:00 DEBUG 30392 --- [springVideo] [  restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2025-10-30T10:29:29.256+01:00 DEBUG 30392 --- [springVideo] [  restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2025-10-30T10:29:29.263+01:00  INFO 30392 --- [springVideo] [  restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-10-30T10:29:29.270+01:00  INFO 30392 --- [springVideo] [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-10-30T10:29:29.271+01:00  INFO 30392 --- [springVideo] [  restartedMain] c.n.springVideo.SpringVideoApplication   : Started SpringVideoApplication in 0.525 seconds (process running for 87.558)
+Checking if database needs initialization...
+2025-10-30T10:29:29.273+01:00 DEBUG 30392 --- [springVideo] [  restartedMain] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        film f1_0
+Hibernate: 
+    select
+        count(*) 
+    from
+        film f1_0
+2025-10-30T10:29:29.277+01:00  INFO 30392 --- [springVideo] [  restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-10-30T10:29:47.182+01:00  INFO 30392 --- [springVideo] [   File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2025-10-30T10:29:47.183+01:00  INFO 30392 --- [springVideo] [       Thread-7] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-10-30T10:29:47.186+01:00  INFO 30392 --- [springVideo] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-10-30T10:29:47.188+01:00  INFO 30392 --- [springVideo] [       Thread-7] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-10-30T10:29:47.188+01:00  INFO 30392 --- [springVideo] [       Thread-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2025-10-30T10:29:47.189+01:00  INFO 30392 --- [springVideo] [       Thread-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.5.7)
+
+2025-10-30T10:29:47.250+01:00  INFO 30392 --- [springVideo] [  restartedMain] c.n.springVideo.SpringVideoApplication   : Starting SpringVideoApplication using Java 25 with PID 30392 (C:\Users\rikpi\Desktop\VS WORKSPACE\PROJECT WORK\Notflix\springVideo\target\classes started by rikpi in C:\Users\rikpi\Desktop\VS WORKSPACE\PROJECT WORK\Notflix\springVideo)
+2025-10-30T10:29:47.250+01:00 DEBUG 30392 --- [springVideo] [  restartedMain] c.n.springVideo.SpringVideoApplication   : Running with Spring Boot v3.5.7, Spring v6.2.12
+2025-10-30T10:29:47.250+01:00  INFO 30392 --- [springVideo] [  restartedMain] c.n.springVideo.SpringVideoApplication   : No active profile set, falling back to 1 default profile: "default"
+2025-10-30T10:29:47.382+01:00  INFO 30392 --- [springVideo] [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-10-30T10:29:47.398+01:00  INFO 30392 --- [springVideo] [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 16 ms. Found 9 JPA repository interfaces.
+2025-10-30T10:29:47.446+01:00  INFO 30392 --- [springVideo] [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-10-30T10:29:47.446+01:00  INFO 30392 --- [springVideo] [  restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-10-30T10:29:47.446+01:00  INFO 30392 --- [springVideo] [  restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.48]
+2025-10-30T10:29:47.463+01:00  INFO 30392 --- [springVideo] [  restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-10-30T10:29:47.463+01:00  INFO 30392 --- [springVideo] [  restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 212 ms
+2025-10-30T10:29:47.480+01:00  INFO 30392 --- [springVideo] [  restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-10-30T10:29:47.482+01:00  INFO 30392 --- [springVideo] [  restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-10-30T10:29:47.487+01:00  INFO 30392 --- [springVideo] [  restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-10-30T10:29:47.488+01:00  INFO 30392 --- [springVideo] [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
+2025-10-30T10:29:47.491+01:00  INFO 30392 --- [springVideo] [  restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-3 - Added connection com.mysql.cj.jdbc.ConnectionImpl@d7c4d66
+2025-10-30T10:29:47.491+01:00  INFO 30392 --- [springVideo] [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
+2025-10-30T10:29:47.492+01:00  WARN 30392 --- [springVideo] [  restartedMain] org.hibernate.orm.deprecation            : HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-10-30T10:29:47.492+01:00  INFO 30392 --- [springVideo] [  restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-3)']
+	Database driver: undefined/unknown
+	Database version: 8.0.43
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-10-30T10:29:47.548+01:00  INFO 30392 --- [springVideo] [  restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-10-30T10:29:47.580+01:00  INFO 30392 --- [springVideo] [  restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-10-30T10:29:47.689+01:00  WARN 30392 --- [springVideo] [  restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-10-30T10:29:47.694+01:00  INFO 30392 --- [springVideo] [  restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2025-10-30T10:29:47.700+01:00 DEBUG 30392 --- [springVideo] [  restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 77 mappings in 'requestMappingHandlerMapping'
+2025-10-30T10:29:47.713+01:00 DEBUG 30392 --- [springVideo] [  restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2025-10-30T10:29:47.717+01:00  INFO 30392 --- [springVideo] [  restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name com.notflix.springVideo.services.UtenteService$CustomUserDetailsService
+2025-10-30T10:29:47.725+01:00 DEBUG 30392 --- [springVideo] [  restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, CsrfFilter, LogoutFilter, UsernamePasswordAuthenticationFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, ExceptionTranslationFilter, AuthorizationFilter
+2025-10-30T10:29:47.732+01:00 DEBUG 30392 --- [springVideo] [  restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2025-10-30T10:29:47.737+01:00 DEBUG 30392 --- [springVideo] [  restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2025-10-30T10:29:47.744+01:00  INFO 30392 --- [springVideo] [  restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-10-30T10:29:47.750+01:00  INFO 30392 --- [springVideo] [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-10-30T10:29:47.752+01:00  INFO 30392 --- [springVideo] [  restartedMain] c.n.springVideo.SpringVideoApplication   : Started SpringVideoApplication in 0.517 seconds (process running for 106.038)
+Checking if database needs initialization...
+2025-10-30T10:29:47.753+01:00 DEBUG 30392 --- [springVideo] [  restartedMain] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        film f1_0
+Hibernate: 
+    select
+        count(*) 
+    from
+        film f1_0
+2025-10-30T10:29:47.754+01:00  INFO 30392 --- [springVideo] [  restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+Terminare il processo batch (S/N)? 
+^C

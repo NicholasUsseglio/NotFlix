@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="it"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="~{fragments :: head('Scheda Attore')}"></head>
+
+<body>
+
+<header th:replace="~{fragments :: header('home')}"></header>
+
+<main class="page-wrapper" style="padding:48px 24px;max-width:1200px;margin:0 auto;">
+
+    <!-- Layout simile a scheda-serietv: immagine a sinistra, info a destra -->
+    <div th:if="${attore != null}" style="display:flex;gap:40px;align-items:flex-start;flex-wrap:wrap;">
+
+        <!-- Foto attore -->
+        <aside style="flex:0 0 360px;max-width:360px;">
+            <div style="background:rgba(255,255,255,0.03);padding:16px;border-radius:6px;">
+                <div class="poster-placeholder" style="height:540px;display:flex;align-items:center;justify-content:center;overflow:hidden;">
+                    <img th:if="${attore.id != null}"
+                         th:src="@{/img/attori/{id}.jpg(id=${attore.id})}"
+                         alt="Foto attore"
+                         style="width:100%;height:100%;object-fit:cover;display:block;">
+                    <div th:if="${attore.id == null}" style="color:var(--muted);">Nessuna immagine</div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Info attore -->
+        <section style="flex:1 1 560px;min-width:280px;color:var(--text);">
+            <header style="margin-bottom:22px;">
+                <h1 style="font-family: Georgia, 'Times New Roman', serif;font-size:38px;margin:0 0 8px;color:#fff;letter-spacing:0.6px;"
+                    th:text="${attore.nome + ' ' + attore.cognome}">Nome Cognome</h1>
+
+                <div style="color:var(--muted);font-size:0.95rem;">
+                    <!-- ✅ campo corretto con underscore -->
+                    <span th:if="${attore.data_nascita != null}">
+                        Nato il <span th:text="${#temporals.format(attore.data_nascita, 'dd/MM/yyyy')}">01/01/1990</span>
+                    </span>
+                    <span th:if="${attore.nazionalita != null}">
+                        · <span th:text="${attore.nazionalita}">Nazionalità</span>
+                    </span>
+                </div>
+            </header>
+
+            <!-- Filmografia -->
+            <div style="margin-top:30px;">
+                <h3 style="margin-bottom:12px;color:#fff;">Filmografia</h3>
+                <div th:if="${#lists.isEmpty(filmografia)}" style="color:var(--muted);">Nessun titolo registrato.</div>
+
+                <ul th:if="${!#lists.isEmpty(filmografia)}" style="list-style:none;padding:0;margin:0;">
+                    <li th:each="f : ${filmografia}" 
+                        style="padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);">
+                        <a th:href="@{/{tipo}/{id}(tipo=${f.tipo}, id=${f.id})}"
+                           th:text="${f.titolo}"
+                           style="color:#e0e0e0;text-decoration:none;font-weight:500;">
+                            Titolo intrattenimento
+                        </a>
+                        <span style="color:var(--muted);font-size:0.9rem;">(
+                            <span th:text="${#dates.format(f.annoUscita,'yyyy')}">2024</span>
+                            )</span>
+                    </li>
+                </ul>
+            </div>
+
+        </section>
+
+    </div>
+
+    <!-- Fallback se attore non trovato -->
+    <div th:if="${attore == null}" style="padding:48px;text-align:center;color:var(--muted);">
+        <h2>Attore non trovato</h2>
+        <p>Impossibile caricare i dettagli dell'attore. Torna alla <a th:href="@{/}">home</a>.</p>
+    </div>
+
+</main>
+
+<footer th:replace="~{fragments :: footer}"></footer>
+<script th:src="@{/js/scheda-film.js}"></script>
+</body>
+</html>

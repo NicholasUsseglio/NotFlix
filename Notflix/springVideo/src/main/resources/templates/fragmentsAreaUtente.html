@@ -1,0 +1,84 @@
+<!-- FILE: fragmentsAreaUtente.html -->
+<!DOCTYPE html>
+<html lang="it"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<!-- HEAD per Area Utente -->
+<th:block th:fragment="headAreaUtente(titoloPagina)">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title th:text="${titoloPagina} ?: 'Area Utente'">Area Utente</title>
+
+    <!-- CSS e JS specifici dell’area utente -->
+    <link rel="stylesheet" th:href="@{/css/areaUtente.css}" />
+    <script defer th:src="@{/js/areaUtenteModale.js}"></script>
+</th:block>
+
+<!-- HEADER dedicato all'area utente -->
+<th:block th:fragment="headerAreaUtente(paginaAttiva)">
+    <header style="background:rgba(0,0,0,0.8);padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.1);">
+        <div style="max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;">
+         <div class="logo"> <a th:href="@{/}" href="/"> <img th:src="@{/img/logo-font.svg}" alt="logo" /> </a> </div>
+
+
+           <!-- <nav style="display:flex;align-items:center;gap:12px;">
+                <a th:href="@{/areaUtente}" th:classappend="${paginaAttiva} == 'profilo' ? 'nav-pill-active' : ''"
+                   class="nav-pill"
+                   style="padding:6px 12px;border-radius:999px;background:rgba(255,255,255,0.08);color:#fff;text-decoration:none;">
+                    Profilo
+                </a>-->
+            <div class="nav"     style="display: flex;    align-items: center;
+                            gap: 8px;    width: 500px;">
+                <a th:href="@{/}" class="nav-pill" >
+                    Home
+                </a>
+                <!-- Bottone Catalogo con dropdown -->
+                    <div class="catalogo-wrapper" style="position:relative;"> <button id="catalogoBtn" class="nav-pill"
+                            style="cursor:pointer;"> CATALOGO ▼ </button>
+                        <div id="catalogoMenu" class="dropdown-menu"
+                            style="display:none;position:absolute;top:100%;left:0; background:#222;border-radius:8px;padding:8px 0;min-width:128px;z-index:1000; box-shadow:0 4px 12px rgba(0,0,0,0.3);">
+                            <a th:href="@{/ricerca/catalogo?tipo=film}" class="dropdown-item"
+                                style="display:block;padding:8px 16px;color:#fff;text-decoration:none;">Film</a> <a
+                                th:href="@{/ricerca/catalogo?tipo=serietv&genere=}" class="dropdown-item"
+                                style="display:block;padding:8px 16px;color:#fff;text-decoration:none;">Serie TV</a> <a
+                                th:href="@{/ricerca/catalogo?tipo=podcast}" class="dropdown-item"
+                                style="display:block;padding:8px 16px;color:#fff;text-decoration:none;">Podcast</a>
+                        </div>
+                    </div> 
+                </div>
+            </nav>
+
+            <div style="padding: 10px;
+                        background-color: #1e1e1e;
+                        color: #fff;
+                        font-size: 0.9rem;
+                        text-align: center;
+                        border-radius: 10px;
+                        border: 2px solid #4f4f4f;">
+                <span sec:authorize="isAuthenticated()">
+                    <span >
+                        Ciao, <span th:text="${#authentication.name} ?: 'Utente'">Utente</span>
+                    </span>
+                    <form th:action="@{/logout}" method="post">
+                        <button type="submit"
+                                    class="btn-delete"
+                                    style="margin-top:6px;padding:4px 10px;font-size:0.8rem;line-height:1;
+                                          cursor:pointer;width:100%; text-align:center;">
+                                Esci
+                            </button>
+                    </form>
+                </span>
+            </div>
+        </div>
+    </header>
+</th:block>
+
+<!-- FOOTER -->
+<th:block th:fragment="footerAreaUtente">
+    <footer style="background:rgba(0,0,0,0.8);padding:16px;text-align:center;color:#aaa;font-size:0.85rem;">
+        © Spring Video – Area Utente
+    </footer>
+</th:block>
+
+</html>

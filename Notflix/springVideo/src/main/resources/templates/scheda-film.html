@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="it"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="~{fragments :: head('Scheda Film')}"></head>
+
+<!-- page-specific stylesheet: keep this file-specific and avoid editing the shared fragment -->
+<link rel="stylesheet" th:href="@{/css/scheda-film.css}" />
+
+<body>
+
+<header th:replace="~{fragments :: header('home')}"></header>
+
+<main class="page-wrapper">
+
+    <!-- MUBI-like layout: grande poster a sinistra, contenuti a destra -->
+    <div th:if="${film != null}" style="display:flex;gap:40px;align-items:flex-start;flex-wrap:wrap;">
+
+        <!-- Poster -->
+        <aside style="flex:0 0 360px;max-width:360px;">
+            <div style="background:rgba(255,255,255,0.03);padding:16px;border-radius:6px;">
+                <div class="poster-placeholder" style="height:540px;display:flex;align-items:center;justify-content:center;overflow:hidden;">
+                    <!-- Use poster by id if available, otherwise show placeholder -->
+                    <img th:if="${film.id != null}"
+                         th:src="@{/img/posters/{id}.jpg(id=${film.id})}"
+                         alt="Locandina"
+                         style="width:100%;height:100%;object-fit:cover;display:block;">
+                    <div th:if="${film.id == null}" style="color:var(--muted);">No image</div>
+                </div>
+
+            <a th:href="@{'/player/' + ${film.id}}" 
+                   class="nav-pill" 
+                   style="display:flex;align-items:center;justify-content:center;
+                          padding:12px 16px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M8 5v14l11-7z"/>
+                    </svg>
+                    Guarda
+                </a>
+            </div>
+        </aside>
+
+        <!-- Content -->
+        <section style="flex:1 1 560px;min-width:280px;color:var(--text);">
+            <header style="margin-bottom:22px;">
+                <h1 style="font-family: Georgia, 'Times New Roman', serif;font-size:38px;margin:0 0 8px;color:#fff;letter-spacing:0.6px;" th:text="${film.titolo}">Titolo</h1>
+                <div style="color:var(--muted);font-size:0.95rem;">
+                    <span th:text="${registaNome}">Regista</span>
+                    <span>·</span>
+                    <span th:text="${#dates.format(film.annoUscita,'yyyy')}">2024</span>
+                    <span>·</span>
+                    <span th:text="${film.durata != null ? film.durata + ' min' : '—'}">120 min</span>
+                    <span>·</span>
+                    <span th:text="${film.genere}">Genere</span>
+                </div>
+            </header>
+
+            <div style="margin-bottom:18px;color:var(--muted);line-height:1.6;" th:text="${film.trama}">Trama...</div>
+
+            <!-- Controls: preferiti + watchlist / login -->
+            <div style="display:flex;gap:12px;align-items:center;margin-bottom:22px;">
+                <div sec:authorize="isAuthenticated()" style="display:flex;gap:8px;">
+                    <!-- Preferiti form -->
+                    <form th:action="@{'/film/' + ${film.id} + '/preferito'}" method="post">
+                        <!-- CSRF token -->
+                        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                        <button class="nav-pill" type="submit" style="padding:10px 14px;"> 
+                            <span th:if="${isPreferito}">&#9733; Nei preferiti</span>
+                            <span th:if="${!isPreferito}">&#128970; Aggiungi ai preferiti</span>
+                        </button>
+                    </form>
+
+                    <!-- Watchlist form -->
+                    <form th:action="@{'/film/' + ${film.id} + '/watchlist'}" method="post">
+                        <!-- CSRF token -->
+                        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                        <button class="nav-pill" type="submit" style="padding:10px 14px;"> 
+                            <span th:if="${isInWatchlist}">&#9733; In watchlist</span>
+                            <span th:if="${!isInWatchlist}">&#10084; Aggiungi alla watchlist</span>
+                        </button>
+                    </form>
+                </div>
+
+                <div sec:authorize="isAnonymous()">
+                    <a th:href="@{/auth/login}" class="nav-pill" style="padding:10px 14px;">Accedi per la watchlist / preferiti</a>
+                </div>
+
+                <div style="margin-left:auto;color:var(--muted);font-size:0.95rem;">
+                    <strong th:text="${mediaVoto != null ? #numbers.formatDecimal(mediaVoto,1,1) : '—'}">4.2</strong>/5 · <span th:text="${numRecensioni}">0</span> voti
+                </div>
+            </div>
+
+            <!-- Reviews compact (moved below cast) - form kept here for quick access -->
+            <div style="background:rgba(255,255,255,0.02);padding:14px;border-radius:6px;margin-top:18px;">
+                <div id="review-form-wrapper" sec:authorize="isAuthenticated()" th:style="${!#strings.isEmpty(miaRecensione)} ? 'display:none;margin-bottom:12px;' : 'margin-bottom:12px;'">
+                    <form id="review-form" th:action="@{'/film/' + ${film.id} + '/valuta'}" method="post" th:attr="data-film-id=${film.id}" style="display:flex;flex-direction:column;gap:8px;align-items:stretch;">
+                        <!-- CSRF token -->
+                        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+
+                        <!-- interactive star rating: hidden input stores voto in 0.5 steps; positioned above the review text area -->
+                        <input type="hidden" name="voto" id="voto-input" th:value="${mioVoto}">
+
+                        <!-- Star rating widget: markup only, behavior in /static/js/rating.js -->
+                        <div id="star-rating" class="star-rating" role="slider" aria-valuemin="0" aria-valuemax="5" aria-valuenow="0" tabindex="0" style="margin-bottom:8px;">
+                            <div class="stars-back">★★★★★</div>
+                            <div class="stars-front" aria-hidden="true"></div>
+                        </div>
+
+                        <textarea id="recensione-input" name="recensione" rows="4" th:text="${miaRecensione}" placeholder="Lascia una recensione..." style="width:100%;padding:8px;border-radius:4px;background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--text);"></textarea>
+
+                        <div style="display:flex;justify-content:flex-end;">
+                            <button type="submit" class="nav-pill">Invia</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+
+            <!-- Container where the client's own review will be injected after submit -->
+            <div id="my-review-container" style="margin-top:12px;"></div>
+
+            <!-- Cast -->
+            <div id="cast-section" style="margin-top:22px;color:var(--muted);">
+                <div style="font-weight:700;margin-bottom:8px;">Cast</div>
+                <div th:if="${#lists.isEmpty(cast)}" style="color:var(--muted);">Nessun cast disponibile</div>
+                <div th:if="${!#lists.isEmpty(cast)}" style="display:flex;flex-wrap:wrap;gap:8px;">
+                    <a th:each="a : ${cast}"
+                       th:href="@{'/attore/' + ${a.id}}"
+                       th:text="${a.nome + ' ' + a.cognome}"
+                       style="background:rgba(255,255,255,0.03);padding:6px 10px;border-radius:4px;color:#e0e0e0;text-decoration:none;">
+                    </a>
+                </div>
+            </div>
+
+            <!-- Reviews listing (moved below cast as requested) -->
+            <div id="reviews-list" style="margin-top:18px;">
+                <h3 style="margin-bottom:10px;color:#fff;">Recensioni</h3>
+                <div th:if="${#lists.isEmpty(recensioni)}" style="color:var(--muted);">Nessuna recensione</div>
+                <div th:each="r : ${recensioni}" style="border-top:1px solid rgba(255,255,255,0.03);padding:12px 0;margin-top:10px;">
+                    <div style="display:flex;justify-content:space-between;align-items:center;">
+                        <div style="font-weight:700;color:#fff;" th:text="${r.utente != null ? r.utente.username : 'Anonimo'}">utente</div>
+                        <div style="color:var(--muted);" th:text="${r.voto + '/5'}">4/5</div>
+                    </div>
+                    <div style="color:var(--muted);margin-top:8px;" th:text="${r.recensione}">Testo recensione</div>
+                    <!-- If this review matches the current user's review, show an Edit button so user can modify it after reload -->
+                    <div th:if="${!#strings.isEmpty(miaRecensione) and r.recensione == miaRecensione and r.voto == mioVoto}" style="margin-top:8px;">
+                        <button type="button" class="edit-server-review nav-pill" th:attr="data-recensione=${r.recensione},data-voto=${r.voto}" style="padding:6px 10px;">Modifica</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Elenco Film correlati -->
+            <div id="correlati-genere-section" style="margin-top:30px;">
+                <h3 style="margin-bottom:10px;color:#fff;">Film Correlati (Stesso Genere)</h3>
+                
+                <div th:if="${filmCorrelatiPerGenere == null or #lists.isEmpty(filmCorrelatiPerGenere)}" style="color:var(--muted);">
+                    Nessun film correlato trovato.
+                </div>
+                
+                <div th:if="${filmCorrelatiPerGenere != null and !#lists.isEmpty(filmCorrelatiPerGenere)}">
+                    <ul style="list-style:none;padding:0;">
+                        <li th:each="fc, iterStat : ${filmCorrelatiPerGenere}" 
+                            th:if="${iterStat.index < 3}"
+                            style="border-bottom:1px solid rgba(255,255,255,0.03);padding:8px 0;">
+                            
+                            <a th:href="@{'/film/' + ${fc.id}}"
+                               style="color:#e0e0e0;text-decoration:none;display:block;">
+                                <span th:text="${fc.titolo}">Titolo Correlato</span>
+                                <span style="color:var(--muted);font-size:0.9rem;">
+                                    ( <span th:text="${#dates.format(fc.annoUscita,'yyyy')}">2024</span> )
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            </section>
+
+        </section>
+
+    </div>
+
+    <!-- fallback se film mancante -->
+    <div th:if="${film == null}" style="padding:48px;text-align:center;color:var(--muted);">
+        <h2>Film non trovato</h2>
+        <p>Impossibile caricare i dettagli del film. Prova a tornare alla <a th:href="@{/}">home</a> o riprova più tardi.</p>
+    </div>
+
+</main>
+
+<footer th:replace="~{fragments :: footer}"></footer>
+
+<!-- include rating JS -- -->
+<script th:src="@{/js/rating.js}"></script>
+<script th:src="@{/js/scheda-film.js}"></script>
+</body>
+</html>

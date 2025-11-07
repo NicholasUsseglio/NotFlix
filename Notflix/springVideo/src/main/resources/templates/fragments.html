@@ -1,0 +1,90 @@
+<!-- FILE: fragments.html -->
+<!DOCTYPE html>
+<html lang="it" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<!-- HEAD -->
+<th:block th:fragment="head(titoloPagina)">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title th:text="${titoloPagina} ?: 'Spring Video'">Spring Video</title> <!-- CSS globale -->
+    <link rel="stylesheet" th:href="@{/css/styles.css}" />
+</th:block> <!-- HEADER -->
+<th:block th:fragment="header(paginaAttiva)">
+    <header>
+        <div class="topbar">
+            <div class="topbar-inner"
+            style="max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;"> <!-- logo -->
+
+                <div class="logo"> <a th:href="@{/}" href="/"> <img th:src="@{/img/logo-font.svg}" alt="logo" /> </a> </div>
+                <!-- nav -->
+                <nav style="display:flex;align-items:center;gap:8px;width: 500px;"> <!-- search bar -->
+                    <form th:action="@{/ricerca/risultati}" action="/search" method="get"
+                        style="display:flex;align-items:center;gap:12px;background:rgba(255,255,255,0.08); border-radius:8px;padding:0px 0px;width: 100%; max-width: 250px;justify-content: space-between;">
+                        <input type="text" name="q" placeholder="Cerca film..."
+                            style="background:transparent;border:none;color:var(--white,#fff);font-size:1.0rem; line-height:1;min-width:200px;outline:none;padding:8px 12px;">
+                        <button type="submit"
+                            style="background:transparent;border:none;color:var(--white,#fff);font-size:1.rem; line-height:1;cursor:pointer;padding:1px 4px;">
+                            🔍 </button> </form> 
+
+
+                            <div class="catalogo-wrapper">
+    <a th:href="@{/}" href="/" class="nav-pill" 
+       style="cursor:pointer;">
+       HOME
+    </a>
+</div>
+                            
+                            <!-- Bottone Catalogo con dropdown -->
+                    <div class="catalogo-wrapper" style="position:relative;"> <button id="catalogoBtn" class="nav-pill"
+                            style="cursor:pointer;"> CATALOGO ▼ </button>
+                        <div id="catalogoMenu" class="dropdown-menu"
+                            style="display:none;position:absolute;top:100%;left:0; background:#222;border-radius:8px;padding:8px 0;min-width:128px;z-index:1000; box-shadow:0 4px 12px rgba(0,0,0,0.3);">
+                            <a th:href="@{/ricerca/catalogo?tipo=film}" class="dropdown-item"
+                                style="display:block;padding:8px 16px;color:#fff;text-decoration:none;">Film</a> <a
+                                th:href="@{/ricerca/catalogo?tipo=serietv&genere=}" class="dropdown-item"
+                                style="display:block;padding:8px 16px;color:#fff;text-decoration:none;">Serie TV</a> 
+                                <!--<a
+                                th:href="@{/ricerca/catalogo?tipo=podcast}" class="dropdown-item"
+                                style="display:block;padding:8px 16px;color:#fff;text-decoration:none;">Podcast</a>-->
+                        </div>
+                    </div> 
+                </nav> <!-- user area -->
+                <div class="user-area"
+                    style="color:var(--white,#fff);font-size:1.1rem;display:flex;flex-direction:column;line-height:1.1; min-width:max-content;text-align:left;">
+                    <!-- utente anonimo --> <span sec:authorize="isAnonymous()"> <a th:href="@{/auth/login}"
+                            href="/auth/login" style="color:var(--white,#fff);text-decoration:none;font-weight:500;">
+                            Login </a></span>
+                            
+                    <!-- utente autenticato -->
+<span sec:authorize="isAuthenticated()" style="position:relative;">
+    <span style="color:var(--muted,#aaa);font-size:0.8rem;">Ciao,</span>
+    <span id="utenteBtn" style="color:var(--white,#fff);font-weight:600;cursor:pointer;">[[${#authentication.name}]] ▼</span>
+
+    <div id="utenteMenu" class="dropdown-menu" style="display:none;position:absolute;top:100%;right:0;left:auto;background:#222;border-radius:8px;padding:8px 0;min-width:150px;z-index:1000; box-shadow:0 4px 12px rgba(0,0,0,0.3);">
+        <a th:href="@{${#authorization.expression('hasRole(''ADMIN'')') ? '/auth/admin' : '/areaUtente'}}"
+           class="dropdown-item" style="display:block;padding:8px 16px;color:#fff;text-decoration:none;font-size:1.0rem;">Area Personale</a>
+        <form th:action="@{/logout}" method="post" id="logoutForm">
+            <span id="logoutTrigger" type="submit" class="dropdown-item" style="display:block;padding:8px 16px;color:#fff;text-decoration:none;font-size:1.0rem;cursor: pointer;">Esci</span>
+        </form>
+    </div>
+</span>
+ </div>
+            </div>
+        </div>
+    </header>
+</th:block>
+<!-- FOOTER -->
+<th:block th:fragment="footer">
+    <footer class="footer">
+        <div style="max-width:1200px;margin:0 auto;">
+            <div style="color:var(--white,#fff);font-weight:500;margin-bottom:8px;"> © Spring Video – Tutti i diritti
+                riservati </div>
+            <div style="color:var(--muted,#aaa);font-size:0.8rem;">
+  <a href="https://www.facebook.com" target="_blank" style="color:inherit; text-decoration:underline;">Facebook</a> ·
+  <a href="https://www.instagram.com" target="_blank" style="color:inherit; text-decoration:underline;">Instagram</a> ·
+  <a href="https://www.youtube.com" target="_blank" style="color:inherit; text-decoration:underline;">YouTube</a>
+</div>
+    </footer>
+</th:block>
+
+
+</html>

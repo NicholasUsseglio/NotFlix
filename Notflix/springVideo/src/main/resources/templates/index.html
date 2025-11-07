@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="it" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: head('Home - Spring Video')"></head>
+<body>
+<header th:replace="fragments :: header('index')"></header>
+<!-- Topbar 
+<header class="topbar">
+  <div class="topbar-inner">
+    <div>
+      <button class="nav-pill">Home</button>
+      <button class="nav-pill">Anime</button>
+      <button class="nav-pill">Manga</button>
+    </div>
+    <div class="user-area">Login</div>
+  </div>
+</header>-->
+
+<main>
+    <!-- Hero >
+<section class="hero">
+  <button class="hero-arrow">&#10094;</button>
+  <div class="hero-slider">
+    <div class="hero-slide active">
+      <h2>Anime in Evidenza</h2>
+      <p>Scopri i migliori anime della stagione direttamente online, senza limiti e gratuitamente.</p>
+    </div>
+  </div>
+  <button class="hero-arrow">&#10095;</button>
+</section>-->
+<h2 class="section-title">ULTIME AGGIUNTE</h2>
+
+<section class="hero">
+  <button class="hero-arrow left" onclick="prevSlide()">‹</button>
+  <div class="hero-slider">
+    <div class="hero-slide active">
+      <div class="hero-content">
+        <a th:href="@{/film/1386}">
+          <img th:src="@{/img/demon.jpg}" alt="Naruto" class="hero-img" />
+        </a>
+      </div>
+    </div>
+    <div class="hero-slide">
+      <div class="hero-content">
+        <a th:href="@{/film/230}">
+          <img th:src="@{/img/old.jpg}" alt="One Piece" class="hero-img" />
+        </a>
+      </div>
+    </div>
+    <div class="hero-slide">
+      <div class="hero-content">
+        <a th:href="@{/film/146}">
+          <img th:src="@{/img/sud.jpg}"  alt="Attack on Titan" class="hero-img"/>
+        </a>
+      </div>
+    </div>
+    <div class="hero-slide">
+      <div class="hero-content">
+        <a th:href="@{/film/329}">
+          <img th:src="@{/img/endgame.jpg}"  alt="Attack on Titan" class="hero-img"/>
+        </a>
+      </div>
+    </div>
+    <div class="hero-slide">
+      <div class="hero-content">
+        <a th:href="@{/film/115}">
+          <img th:src="@{/img/opp.jpg}"  alt="Attack on Titan" class="hero-img"/>
+        </a>
+      </div>
+    </div>
+  </div>
+  <button class="hero-arrow right" onclick="nextSlide()">›</button>
+</section>
+
+<h2 class="section-title">TOP FILM POPOLARI NELL'ULTIMO MESE</h2>
+
+<!--FILMS cards-->
+
+<section class="films-wrapper">
+  <button class="films-arrow left">‹</button>
+  <div class="films-scroll">
+    <div class="films-container">
+      <div class="film-card">
+        <a th:href="@{/film/1359}" class="film-link">
+                <div class="film-header">1 - Shutter Island</div>
+                <div class="poster-placeholder"><img th:src="@{/img/posters/1359.jpg}">
+                    </div>
+                </div>
+                </a>
+
+
+            <div class="film-card">
+        <a th:href="@{/film/19}" class="film-link">
+                <div class="film-header">2 - Intrusion</div>
+                <div class="poster-placeholder"><img th:src="@{/img/posters/19.jpg}">
+                    </div>
+                </div>
+                </a>
+
+
+            <div class="film-card">
+        <a th:href="@{/film/7}" class="film-link">
+                <div class="film-header">3 - My Little Pony</div>
+                <div class="poster-placeholder"><img th:src="@{/img/posters/7.jpg}">
+                    </div>
+                </div>
+                </a>
+            
+            <div class="film-card">
+        <a th:href="@{/film/1}" class="film-link">
+                <div class="film-header">4 - Dick Johnson is dead</div>
+                <div class="poster-placeholder"><img th:src="@{/img/posters/1.jpg}">
+                    </div>
+                </div>
+                </a>
+            <div class="film-card">
+              <a th:href="@{/film/341}" class="film-link">
+                <div class="film-header">5 - Inception</div>
+                    <div class="poster-placeholder"><img th:src="@{/img/posters/341.jpg}"></div>
+                </div>
+            </a>
+             <div class="film-card">
+              <a th:href="@{/film/39}" class="film-link">
+                <div class="film-header">6 - Birth of the Dragon</div>
+                    <div class="poster-placeholder"><img th:src="@{/img/posters/39.jpg}"></div>
+                </div>
+            </a>
+            
+            <div class="film-card">
+        <a th:href="@{/film/168}" class="film-link">
+                <div class="film-header">7 - Avatar</div>
+                <div class="poster-placeholder"><img th:src="@{/img/posters/168.jpg}">
+                    </div>
+                </div>
+                </a>
+            <div class="film-card">
+        <a th:href="@{/film/141}" class="film-link">
+                <div class="film-header">8 - Titanic</div>
+                <div class="poster-placeholder"><img th:src="@{/img/posters/141.jpg}">
+                    </div>
+                </div>
+                </a>
+            <div class="film-card">
+        <a th:href="@{/film/85}" class="film-link">
+                <div class="film-header">9 - Toy Story</div>
+                <div class="poster-placeholder"><img th:src="@{/img/posters/85.jpg}">
+                    </div>
+                </div>
+                </a>
+            
+  </div>
+  <button class="films-arrow right">›</button>
+</section>
+
+<h2 class="section-title">SERIE TV DEL MOMENTO</h2>
+
+<section class="films-wrapper">
+  <button class="films-arrow left">‹</button>
+  <div class="films-scroll">
+    <div class="films-container">
+      <div class="film-card">
+        <a th:href="@{/serietv/2}" class="film-link">
+                <div class="film-header">Blood & Water</div>
+                <div class="poster-placeholder"><img th:src="@{/img/posters/2.jpg}">
+                    </div>
+                </div>
+                </a>
+            <div class="film-card">
+            <a th:href="@{/serietv/1699}" class="film-link">
+                <div class="film-header">The Crown</div>
+                <div class="poster-placeholder"><img th:src="@{/img/posters/1699.jpg}">
+                    </div>
+                </div>
+                </a>
+            <div class="film-card">
+            <a th:href="@{/film/5306}" class="film-link">
+                <div class="film-header">Narcos</div>
+                <div class="poster-placeholder"><img th:src="@{/img/posters/5306.jpg}">
+                    </div>
+                </div>
+                </a>
+                <div class="film-card">
+            <a th:href="@{/film/3686}" class="film-link">
+                <div class="film-header">Stranger Things</div>
+                <div class="poster-placeholder"><img th:src="@{/img/posters/3686.jpg}">
+                    </div>
+                </div>
+                </a>
+                <div class="film-card">
+            <a th:href="@{/serietv/110}" class="film-link">
+                <div class="film-header">La casa de papel</div>
+                <div class="poster-placeholder"><img th:src="@{/img/posters/110.jpg}">
+                    </div>
+                </div>
+                </a>
+                <div class="film-card">
+            <a th:href="@{/serietv/34}" class="film-link">
+                <div class="film-header">Squid game</div>
+                <div class="poster-placeholder"><img th:src="@{/img/posters/34.jpg}">
+                    </div>
+                </div>
+                </a>
+                <div class="film-card">
+            <a th:href="@{/film/3542}" class="film-link">
+                <div class="film-header">Naruto</div>
+                <div class="poster-placeholder"><img th:src="@{/img/posters/3542.jpg}">
+                    </div>
+                </div>
+                </a>
+                <div class="film-card">
+            <a th:href="@{/film/3453}" class="film-link">
+                <div class="film-header">Peaky Blinders</div>
+                <div class="poster-placeholder"><img th:src="@{/img/posters/3453.jpg}">
+                    </div>
+                </div>
+                </a>
+                <div class="film-card">
+            <a th:href="@{/film/3775}" class="film-link">
+                <div class="film-header">Black Mirror</div>
+                <div class="poster-placeholder"><img th:src="@{/img/posters/3775.jpg}">
+                    </div>
+                </div>
+                </a>
+            
+            
+  </div>
+  <button class="films-arrow right">›</button>
+</section>
+
+<!-- Film Cards 
+<section class="films-wrapper">
+  <button class="films-arrow left">&#10094;</button>
+  <div class="films-scroll">
+    <div class="films-container">
+      <div class="film-card">
+        <div class="film-header">Naruto</div>
+        <div class="poster-placeholder">Poster</div>
+        <div class="film-body">Episodi: 220</div>
+      </div>
+      <div class="film-card">
+        <div class="film-header">One Piece</div>
+        <div class="poster-placeholder">Poster</div>
+        <div class="film-body">Episodi: 1000+</div>
+      </div>
+      <div class="film-card">
+        <div class="film-header">Attack on Titan</div>
+        <div class="poster-placeholder">Poster</div>
+        <div class="film-body">Episodi: 75</div>
+      </div>
+    </div>
+  </div>
+  <button class="films-arrow right">&#10095;</button>
+</section>-->
+
+<!-- About -->
+<section class="about">
+  <h3>Benvenuto su Spring Video</h3>
+  <p>Guarda film e serie tv in streaming direttamente dal browser, con una selezione aggiornata ogni settimana.</p>
+  <a href="https://www.youtube.com/watch?v=Sagg08DrO5U" target="_blank">
+  <button class="cta">Scopri di più</button>
+</a>
+
+</section>
+</main>
+
+<!-- Footer -->
+<footer th:replace="fragments :: footer"></footer>
+
+
+<script th:src="@{/js/main.js}"> </script>
+
+</body>
+
+</html>
+

@@ -1,0 +1,232 @@
+:root{
+  /* Palette Spring Video */
+  --grad-start: #5B00FF;   /* blu/viola vivo */
+  --grad-end:   #FF00A8;   /* rosa acceso */
+  --bg: #0f0f1a;
+  --panel: rgba(255,255,255,0.08);
+  --text: #f8f8ff;
+  --muted: #cfcfe1;
+  --white: #fff;
+}
+
+/* Reset base */
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg,var(--grad-start),var(--grad-end));
+  min-height:100vh;
+  color:var(--text);
+}
+
+/* Topbar */
+.topbar{
+  background: rgba(0,0,0,0.3);
+  backdrop-filter: blur(10px);
+  border-bottom:1px solid rgba(255,255,255,0.15);
+  position:sticky;top:0;z-index:20;
+}
+.topbar-inner{
+  max-width:1100px;
+  margin:auto;
+  padding:10px 18px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.logo img{height:40px;}
+.nav-pill{
+  background:transparent;
+  border:2px solid rgba(255,255,255,0.3);
+  color:var(--white);
+  padding:6px 16px;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight:600;
+}
+.user-area{
+  border:2px solid rgba(255,255,255,0.25);
+  padding:6px 12px;
+  border-radius:8px;
+}
+
+/* Hero */
+.hero{
+  max-width:1100px;
+  margin:40px auto;
+  background:rgba(0,0,0,0.35);
+  border-radius:12px;
+  padding:40px 60px;
+  position:relative;
+  display:flex;align-items:center;
+  gap:12px;
+}
+.hero-arrow{
+  background:rgba(255,255,255,0.2);
+  border:none;
+  color:white;
+  font-size:32px;
+  border-radius:8px;
+  width:56px;height:56px;
+  cursor:pointer;
+}
+.hero-slider{flex:1;position:relative;overflow:hidden;min-height:150px}
+.hero-slide{
+  position:absolute;inset:0;
+  opacity:0;transform:translateX(20px);
+  transition:all .4s ease;
+}
+.hero-slide.active{opacity:1;transform:translateX(0)}
+.hero h2{font-size:32px;margin-bottom:12px}
+.hero p{max-width:600px;line-height:1.5;color:var(--muted)}
+
+/* Film cards */
+.films{
+  max-width:1100px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:20px;
+  padding:10px;
+}
+.film-card{
+  background:rgba(0,0,0,0.35);
+  border-radius:10px;
+  overflow:hidden;
+  box-shadow:0 4px 12px rgba(0,0,0,0.2);
+  transition:transform .3s ease;
+}
+.film-card:hover{transform:translateY(-4px)}
+.film-header{
+  background:linear-gradient(90deg,var(--grad-start),var(--grad-end));
+  color:white;
+  font-weight:700;
+  padding:10px 12px;
+}
+.film-body{padding:14px}
+.poster-placeholder{
+  background:rgba(255,255,255,0.08);
+  border-radius:8px;
+  height:100px;
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:10px;
+  color:var(--muted);
+}
+
+/* About */
+.about{
+  max-width:900px;
+  margin:50px auto;
+  text-align:center;
+  background:rgba(255,255,255,0.08);
+  border-radius:10px;
+  padding:30px;
+}
+.about h3{font-size:26px;margin-bottom:10px}
+.about p{max-width:700px;margin:0 auto 18px;line-height:1.5;color:var(--muted)}
+.cta{
+  background:linear-gradient(90deg,var(--grad-start),var(--grad-end));
+  border:none;
+  color:white;
+  padding:10px 22px;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight:600;
+}
+
+/* Footer */
+.footer{
+  text-align:center;
+  padding:20px;
+  font-size:0.9rem;
+  color:var(--muted);
+  background:rgba(0,0,0,0.25);
+}
+
+/* Responsive */
+@media(max-width:720px){
+  .hero{flex-direction:row;padding:24px 20px}
+  .hero h2{font-size:22px;}
+  .hero-arrow{width:44px;height:44px;font-size:24px}
+}
+
+/*  Catalogo Serie TV  */
+.catalog-header {
+  max-width: 1100px;
+  margin: 20px auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#searchBar input {
+  padding: 10px;
+  background: var(--panel);
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 8px;
+  color: var(--white);
+}
+
+.filters {
+  max-width: 1100px;
+  margin: 10px auto 25px auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.filter-btn {
+  padding: 10px 18px;
+  color: var(--white);
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  background: var(--panel);
+  border: 2px solid rgba(255,255,255,0.25);
+  transition: 0.2s;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+  background: linear-gradient(90deg,var(--grad-start),var(--grad-end));
+  border-color: transparent;
+}
+
+.serietv-list {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.results-grid {
+  margin-top: 12px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 20px;
+  text-align: center;
+}
+
+.poster-placeholder.small {
+  height: 160px;
+  background: var(--panel);
+  border-radius: 8px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color: var(--muted);
+  box-shadow:0 4px 12px rgba(0,0,0,0.2);
+}
+
+.result-card p {
+  margin-top: 8px;
+  font-size: .95rem;
+  font-weight: 600;
+  color: var(--white);
+}
+
+.category-box {
+  background: var(--panel);
+  border-radius: 12px;
+  padding: 24px;
+  margin: 25px auto;
+  text-align: center;
+  color: var(--muted);
+  max-width: 900px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.25);
+}

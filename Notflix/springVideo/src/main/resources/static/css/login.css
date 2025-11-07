@@ -1,0 +1,185 @@
+
+        body {
+            margin: 0;
+      
+                font-family: 'Poppins', sans-serif;
+                background-color: #111;
+                min-height: 100vh;
+                color: var(--white, #fff);
+                 display: flex  ;
+                flex-direction: column;
+
+        }
+
+        select{
+        background: rgba(255, 255, 255, 0.05);
+                        backdrop-filter: blur(6px);
+                        border-radius: 20px;
+                        padding: 10px;
+                        max-width: 400px;
+                        width: 100%;
+                        margin-bottom: 40px;
+                        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+                        font-size: 1rem;
+                        text-align: center;
+                        color:white;
+                        border: none;
+
+        }
+        option {
+        background-color: #343434;  
+        }
+        .login-container {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(6px);
+            border-radius: 12px;
+            padding: 32px;
+            max-width: 400px;
+            width: 100%;
+            margin: 40px auto;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            text-align: center;
+        }
+        .login-container h2 {
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            font-weight: 600;
+        }
+        .form-group {
+            margin-bottom: 16px;
+            text-align: left;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            color: var(--white,#fff);
+            font-weight: 500;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border-radius: 999px;
+            border: none;
+            outline: none;
+            background: rgba(255,255,255,0.08);
+            color: var(--white,#fff);
+        }
+        .form-group button {
+            width: 100%;
+            padding: 12px;
+            border-radius: 999px;
+            border: none;
+            background: #ff00a8; /*#FF00A8*/
+
+            color: var(--white,#fff);
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        .form-group button:hover {
+            background: transparent;
+            border: 2px solid #ff00a8;        }
+        .error {
+            color: #ff4d4f;
+            margin-top: 10px;
+        }
+        .success {
+            color: #4caf50;
+            margin-top: 10px;
+        }
+        footer {
+            margin-top: auto;
+            padding: 16px 0;
+            text-align: center;
+            background: rgba(0,0,0,0.2);
+            color: var(--muted,#aaa);
+            font-size: 0.8rem;
+        }
+        a {
+            color: var(--white,#fff);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .register-link {
+            font-weight: 400;
+            font-size: 0.9rem;
+            color: var(--muted,#aaa);
+            display: block;
+            margin-top: 8px;
+        }
+        
+        form input,
+        form button {
+    width: 100%;          /* occuperanno tutta la larghezza del contenitore */
+    box-sizing: border-box; /* include padding e bordo nel calcolo della larghezza */
+    display: block;       /* forza ogni elemento su una nuova riga */
+    margin-bottom: 12px;  /* spazio tra gli elementi */
+    border-radius: 8px;   /* stesso bordo arrotondato di input */
+    font-size: 1rem;      /* uniforma il testo */
+}
+
+form button {
+    padding: 12px;        /* stesso padding dei campi input */
+    background-color: #fff; /* o il colore del tuo tema */
+    color: #000;          /* testo del bottone */
+    border: none;         /* elimina eventuale bordo predefinito */
+    cursor: pointer;
+}
+
+/* STILE UNIFICATO PER TUTTI GLI INPUT */
+.form-group input,
+.form-group input[type="date"] {
+    width: 100%;
+    padding: 12px;
+    border-radius: 999px;
+    border: none;
+    outline: none;
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--white,#fff);
+    font-family: inherit; /* prende lo stesso font di body */
+    font-size: 1rem;
+}
+
+
+.error {
+  color: #ff4d4d;
+  background-color: rgba(255, 0, 0, 0.1);
+  padding: 8px 12px;
+  border-radius: 6px;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.success {
+  color: #4caf50;
+  background-color: rgba(76, 175, 80, 0.1);
+  padding: 8px 12px;
+  border-radius: 6px;
+  margin-top: 10px;
+  text-align: center;
+}
+.topbar{
+  background: rgba(0,0,0,0.3);
+  backdrop-filter: blur(10px);
+  border-bottom:1px solid rgba(255,255,255,0.15);
+  position:sticky;top:0;z-index:20;
+}
+
+
+.checkbox-container {
+      display: flex;
+      align-items: center;
+      font-size: 14px; /* Regola la grandezza del testo */
+    }
+    .checkbox-container input {
+      width: 20px; /* Riduce la dimensione della checkbox */
+      height: 20px; /* Imposta un'altezza fissa per la checkbox */
+      margin-right: 10px; /* Distanza tra la checkbox e il testo */
+    }
+    .checkbox-container a {
+      text-decoration: none;
+      color: #007bff; /* Colore del link */
+    }
+    .checkbox-container a:hover {
+      text-decoration: underline; /* Sottolineatura al passaggio del mouse */
+    }

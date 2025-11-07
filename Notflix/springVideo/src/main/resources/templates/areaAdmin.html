@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="it" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+
+<head th:replace="fragments :: head('Area Admin')">
+</head>
+
+<body>
+<header  th:replace="fragments :: header(paginaAttiva)"></header>
+<link rel="stylesheet" th:href="@{/css/areaUtente.css}" />
+<link rel="stylesheet" th:href="@{/css/style-utenti.css}" />
+<link rel="stylesheet" th:href="@{/css/areaAdmin.css}" />
+
+
+
+ 
+<main class="admin-area-main"> <aside class="sidebar">
+    
+    <h2>Gestione Amministrativa</h2>
+    <a id="openModalBtn" 
+       th:href="@{/auth/admin/modificaProfiloUtente}">
+       Modifica Profilo Admin
+    </a>
+    
+    <hr style="border-top: 1px solid rgba(255,255,255,0.15); margin: 8px 0;">
+
+    <h2>Gestione Utenti</h2>
+    <a th:href="@{/auth/register}">Aggiungi utenti </a>
+    <a th:href="@{/auth/admin/lista-utenti}"> Utenti registrati </a>
+    
+    <hr style="border-top: 1px solid rgba(255,255,255,0.15); margin: 8px 0;">
+
+    <h2>Gestione Contenuti</h2>
+    <a th:href="@{/auth/admin/uploadFilm}">Carica Film </a>
+    <a th:href="@{/auth/admin/uploadSerieTv}">Carica Serie Tv </a>
+
+    <a th:href="@{/auth/admin/lista-contenuti(tipo='film')}">Lista Film </a>
+    <a th:href="@{/auth/admin/lista-contenuti(tipo='serietv')}">Lista Serie Tv  </a>
+    <!--<a th:href="@{/auth/admin/lista-contenuti(tipo='podcast')}">Lista Podcast </a>-->
+
+    </aside>
+
+
+  <section id="contenutoDashboard" class="dashboard-section">
+    <h1 th:text="'Benvenuto, ' + (${#authentication.name} ?: 'Admin') + '!'">Benvenuto!</h1>
+    <!--BARRA DI RICERCA CHE NON FUNZIONA, FORSE NEMMENO UTILE
+    <div class="search-box">
+         <form action="/search" method="get"
+                      style="display:flex;align-items:center;gap:6px;background:rgba(255,255,255,0.08);
+                             border-radius:999px;padding:4px 10px; max-width: 400px;">
+                    <input type="text"
+                           name="q"
+                           placeholder="Cerca operazione..."
+                           style="background:transparent;border:none;color:var(--white,#fff);font-size:0.9rem;
+                                  line-height:1;min-width:140px;outline:none;" />
+                    <button type="submit"
+                            style="background:transparent;border:none;color:var(--white,#fff);font-size:0.9rem;
+                                   line-height:1;cursor:pointer;">
+                        🔍
+                    </button>
+        </form>
+    </div>
+  -->
+
+    <p style="margin-bottom: 15px;">Scegli un'operazione dal menu laterale per iniziare la gestione.</p>
+    
+  
+  
+
+
+  <!-- Contenuto Modifica Profilo -->
+<section id="contenutoProfilo" class="profilo-section" style="display:none;">
+    <h2>Modifica Profilo</h2>
+
+    <form th:action="@{/auth/admin/modificaProfilo}" method="post" class="profilo-form">
+      <input type="hidden" name="id" th:value="${utente.id}">
+
+      <div class="info-box">
+        <label>Nome:</label>
+        <span class="field-value" th:text="${utente.nome}"></span>
+        <input type="text" name="nome" th:value="${utente.nome}" placeholder="Modifica nome">
+        <button type="button" class="btn-edit" data-field="nome">Modifica</button>
+
+      </div>
+
+      <div class="info-box">
+        <label>Cognome:</label>
+        <span class="field-value" th:text="${utente.cognome}"></span>
+        <input type="text" name="cognome" th:value="${utente.cognome}" placeholder="Modifica cognome">
+        <button type="button" class="btn-edit" data-field="cognome">Modifica</button>
+      </div>
+
+      <div class="info-box">
+        <label>Username:</label>
+        <span class="field-value" th:text="${utente.username}"></span>
+        <input type="text" name="username" th:value="${utente.username}" placeholder="Modifica username">
+        <button type="button" class="btn-edit" data-field="username">Modifica</button>
+      </div>
+
+      <div class="info-box">
+        <label>Email:</label>
+        <span class="field-value" th:text="${utente.email}"></span>        
+        <input type="email" name="email" th:value="${utente.email}" placeholder="Modifica email">
+        <button type="button" class="btn-edit" data-field="email">Modifica</button>
+      </div>
+
+      <div class="info-box">
+        <label>Nazionalità:</label>
+        <span class="field-value" th:text="${utente.nazionalita}"></span>  
+        <input type="text" name="nazionalita" th:value="${utente.nazionalita}" placeholder="Modifica nazionalità">
+        <button type="button" class="btn-edit" data-field="nazionalita">Modifica</button>
+      </div>
+
+      <div class="info-box">
+        <label>Data di nascita:</label>
+        <span class="field-value" th:text="${utente.dataNascita}"></span>
+        <input type="date" name="dataNascita" th:value="${utente.dataNascita}">
+        <button type="button" class="btn-edit" data-field="dataNascita">Modifica</button>
+        
+      </div>
+
+      <div class="action-buttons">
+        <button type="submit" class="btn-salva">💾 Salva Modifiche</button>
+        <button type="button" id="btnAnnulla" class="btn-annulla">✖ Annulla</button>
+      </div>
+    </form>
+  </section>
+</section>
+
+  </main>
+
+<footer th:replace="fragments :: footer"></footer>
+
+
+<script th:src="@{/js/areaUtenteModale.js}"> </script>
+
+<script th:src="@{/js/areaAdmin.js}"> </script>
+
+<script th:src="@{/js/main.js}"> </script>
+
+  
+</body>
+</html>

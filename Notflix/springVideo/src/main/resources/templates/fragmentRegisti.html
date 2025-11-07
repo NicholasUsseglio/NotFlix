@@ -1,0 +1,18 @@
+
+<!DOCTYPE html>
+<html lang="it"
+      xmlns:th="http://www.thymeleaf.org">
+
+<!-- Frammento specifico per la pagina Registi: include CSS globale + registi.css -->
+<th:block th:fragment="head(titoloPagina)">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title th:text="${titoloPagina} ?: 'Spring Video'">Spring Video</title>
+
+    <!-- CSS globale -->
+    <link rel="stylesheet" th:href="@{/css/styles.css}" href="../static/css/styles.css" />
+    <!-- CSS specifico per la pagina registi -->
+    <link rel="stylesheet" th:href="@{/css/registi.css}" href="../static/css/registi.css" />
+</th:block>
+
+</html>
