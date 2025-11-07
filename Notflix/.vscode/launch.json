@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-SpringVideoApplication<springVideo>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.notflix.springVideo.SpringVideoApplication",
+            "projectName": "springVideo",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
